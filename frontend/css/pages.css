@@ -1,0 +1,121 @@
+/* ==========================================================================
+   CourseWise — page-specific styles
+   ========================================================================== */
+
+/* Home: banner (after UoS HomeBanner) ------------------------------------ */
+.banner {
+  position: relative; overflow: hidden;
+  background: #000; color: #fff;
+  min-height: min(78vh, 720px);
+  display: flex; align-items: flex-end;
+}
+.banner-diamond {
+  position: absolute; pointer-events: none;
+  width: min(1100px, 130vw); right: -8%; top: 50%; transform: translateY(-50%);
+  opacity: 0.55;
+}
+.banner-inner {
+  position: relative; z-index: 1;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s7);
+  padding-block: var(--s9) var(--s8);
+}
+.banner-content { max-width: 760px; }
+.banner h1 { color: #fff; font-weight: 500; }
+.banner p { color: rgba(255, 255, 255, 0.82); font-size: var(--fs-lg); margin-top: var(--s4); max-width: 52ch; }
+.banner-cta { display: flex; flex-wrap: wrap; gap: var(--s3); margin-top: var(--s6); }
+.btn-outline-light { color: #fff; border-color: rgba(255, 255, 255, 0.6); }
+.btn-outline-light:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
+.banner-line { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: var(--brand); }
+
+/* Small card bottom-right (after UoS news card on banner) */
+.banner-card {
+  flex-shrink: 0; width: 320px;
+  background: #fff; color: #000; border-radius: var(--radius-lg); padding: 1.25em;
+  display: grid; gap: var(--s3);
+}
+.banner-card:hover { text-decoration: none; }
+.banner-card-label { font-size: var(--fs-xs); color: #404040; }
+.banner-card-row { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--s3); }
+.banner-card-row strong { display: block; font-size: var(--fs-xl); font-weight: 500; }
+.banner-card-row span:not(.badge) { font-size: var(--fs-sm); color: #404040; }
+.banner-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+.banner-card-stats div { background: #F8F8F8; border-radius: var(--radius); padding: var(--s3); }
+.banner-card-stats dt { font-size: var(--fs-xs); color: #404040; }
+.banner-card-stats dd { margin: 0; font-size: var(--fs-xl); font-weight: 500; }
+.banner-card .badge-hard { color: #C4223A; background: #FDE8EB; }
+
+/* What are you looking for? (after UoS SearchWithTabs) ------------------- */
+.lookup { display: grid; grid-template-columns: 1fr 1.2fr; gap: var(--s6); align-items: center; margin-bottom: var(--s6); }
+.lookup-search { display: flex; gap: var(--s2); }
+.lookup-search input {
+  flex: 1; min-width: 0; height: 56px; padding-inline: var(--s5);
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2);
+}
+.lookup-search input:focus { outline: 2px solid var(--brand); outline-offset: 0; background: var(--surface); }
+.lookup-card {
+  display: grid; align-content: start; gap: var(--s3);
+  padding: 1.75em 1.5em; border-radius: var(--radius-lg);
+  background: var(--surface-2); color: var(--text);
+  border: 1px solid transparent; transition: background 0.2s, border-color 0.2s;
+}
+.lookup-card:hover { text-decoration: none; background: var(--brand-soft); border-color: var(--brand); }
+.lookup-card svg { width: 40px; height: 40px; color: var(--brand-strong); margin-bottom: var(--s3); }
+.lookup-card h3 { font-size: var(--fs-xl); font-weight: 500; }
+.lookup-card p { font-size: var(--fs-sm); }
+
+/* A story through numbers (after UoS FactsAndFigures) -------------------- */
+.numbers { background: var(--brand-soft); padding-block: var(--s8); }
+.numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s5); margin-top: var(--s6); }
+.number { border-top: 3px solid var(--brand); padding-top: var(--s4); }
+.number strong { display: block; font-size: clamp(2.25rem, 1.6rem + 2.4vw, 3.5rem); font-weight: 500; line-height: 1.1; color: var(--text); }
+.number span { color: var(--text-muted); }
+
+/* Section row: heading + link */
+.section-row { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--s4); flex-wrap: wrap; margin-bottom: var(--s6); }
+.section-row .section-head { margin-bottom: 0; }
+.rank-title { font-size: var(--fs-xl); font-weight: 500; margin-bottom: var(--s3); }
+
+/* Label cards (after UoS BottomLableCard) -------------------------------- */
+.label-card {
+  position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 340px; border-radius: var(--radius-lg); color: #fff;
+}
+.label-card:hover { text-decoration: none; }
+.label-card > img {
+  position: absolute; width: 140%; max-width: none; left: -20%; top: -10%;
+  opacity: 0.35; filter: brightness(0) invert(1); transition: transform 0.6s var(--ease);
+}
+.label-card:hover > img { transform: scale(1.05); }
+.label-navy { background: var(--navy); }
+.label-blue { background: var(--blue); }
+.label-purple { background: var(--purple); }
+.label-card-body { position: relative; padding: 1.5em; padding-right: 4.5em; }
+.label-card-body::before { content: ""; display: block; width: 48px; height: 4px; background: var(--brand); margin-bottom: var(--s4); border-radius: 2px; }
+.label-card h3 { font-size: var(--fs-xl); font-weight: 500; }
+.label-card p { color: rgba(255, 255, 255, 0.85); font-size: var(--fs-sm); margin-top: var(--s2); }
+.label-card-arrow {
+  position: absolute; right: 1.5em; bottom: 1.5em;
+  width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--brand); color: #000; transition: transform 0.25s ease-in-out;
+}
+.label-card-arrow svg { width: 50%; height: 50%; }
+.label-card:hover .label-card-arrow { transform: scale(1.12); }
+
+/* FAQ */
+.faq { display: grid; grid-template-columns: 1fr 1.6fr; gap: var(--s7); align-items: start; }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .banner-inner { flex-direction: column; align-items: flex-start; }
+  .lookup { grid-template-columns: 1fr; }
+  .numbers-grid { grid-template-columns: 1fr 1fr; }
+  .faq { grid-template-columns: 1fr; gap: var(--s5); }
+}
+@media (max-width: 640px) {
+  .banner { min-height: 0; }
+  .banner-inner { padding-block: var(--s8) var(--s7); }
+  .banner-card { width: 100%; }
+  .lookup-search { flex-direction: column; }
+  .numbers-grid { grid-template-columns: 1fr 1fr; gap: var(--s4); }
+  .label-card { min-height: 260px; }
+}
