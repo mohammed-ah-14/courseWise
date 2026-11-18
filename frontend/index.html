@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CourseWise | University of Sharjah</title>
+  <title>CourseWise · Know your courses before you register</title>
   <meta name="description" content="CourseWise predicts course difficulty from historical grade data and helps students plan their semester GPA and workload.">
   <script src="js/theme-init.js"></script>
-  <link rel="preload" href="assets/fonts/29LT%20Bukra%20Rg.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/images/uni_bg.png" as="image">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/pages.css">
@@ -18,175 +18,167 @@
   <header id="site-header"></header>
 
   <main id="main">
-    <!-- Banner -->
-    <section class="banner">
-      <img class="banner-diamond" src="assets/images/unidiamond3.png" alt="" aria-hidden="true">
-      <div class="container banner-inner">
-        <div class="banner-content">
+    <!-- Hero ------------------------------------------------------------- -->
+    <section class="hero">
+      <img class="hero-media" src="assets/images/uni_bg.png" alt="" aria-hidden="true">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow">A University of Sharjah student project</span>
           <h1>Know your courses before you register.</h1>
-          <p>Course difficulty predicted from years of grade data, so you can build a semester you can handle.</p>
-          <div class="banner-cta">
-            <a class="btn btn-primary" href="predict.html">Predict a course <span class="btn-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
-            <a class="btn btn-outline-light" href="planner.html">Plan my semester</a>
-          </div>
+          <p class="hero-lead">How hard is a course, really? CourseWise reads years of grade history and predicts the average GPA and drop rate of the next offering.</p>
+
+          <form class="hero-search" id="hero-search" role="search" action="pages/explorer.html">
+            <div class="ac">
+              <label class="visually-hidden" for="hero-q">Search courses</label>
+              <input id="hero-q" name="q" type="search" placeholder="Search a course, e.g. MATH 220 or Calculus">
+            </div>
+            <button class="btn btn-accent" type="submit">Search</button>
+          </form>
+          <p class="hero-try" id="hero-try">Popular:
+            <a href="pages/course.html?id=CS225">CS 225</a>
+            <a href="pages/course.html?id=MATH220">MATH 220</a>
+            <a href="pages/course.html?id=CHEM102">CHEM 102</a>
+            <a href="pages/course.html?id=ECON102">ECON 102</a>
+          </p>
         </div>
 
-        <a class="banner-card" href="course.html?id=CS225">
-          <span class="banner-card-label">Example prediction</span>
-          <div class="banner-card-row">
-            <div>
-              <strong>CS 225</strong>
-              <span>Data Structures</span>
-            </div>
-            <span class="badge badge-hard">Hard</span>
-          </div>
-          <dl class="banner-card-stats">
-            <div><dt>Avg GPA</dt><dd class="num">2.71</dd></div>
-            <div><dt>DFW rate</dt><dd class="num">17.8%</dd></div>
-          </dl>
+        <a class="hero-card" id="hero-card" href="pages/course.html?id=MATH220" aria-live="polite">
+          <div class="skeleton skeleton-line" style="width:40%"></div>
+          <div class="skeleton skeleton-line" style="width:70%;height:22px"></div>
+          <div class="skeleton" style="height:70px"></div>
         </a>
       </div>
-      <div class="banner-line" aria-hidden="true"></div>
-    </section>
 
-    <!-- What are you looking for? -->
-    <section class="section">
       <div class="container">
-        <div class="lookup">
-          <h2>What are you looking for?</h2>
-          <form class="lookup-search" action="explorer.html" role="search">
-            <label class="visually-hidden" for="q">Search courses</label>
-            <input id="q" name="q" type="search" placeholder="Search by course code or title, e.g. CS 225" autocomplete="off">
-            <button class="btn btn-primary" type="submit">Search <span class="btn-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
-          </form>
-        </div>
-
-        <div class="grid grid-4 lookup-cards">
-          <a class="lookup-card" href="predict.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m7 15 4-4 3 3 5-6"/></svg>
-            <h3>Difficulty Predictor</h3>
-            <p>Predicted average GPA, DFW rate and difficulty for any course and term.</p>
-          </a>
-          <a class="lookup-card" href="planner.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
-            <h3>Semester Planner</h3>
-            <p>Combine courses into a term and see your expected GPA and workload.</p>
-          </a>
-          <a class="lookup-card" href="explorer.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-            <h3>Course Explorer</h3>
-            <p>Browse and filter courses by subject, level, credits and difficulty.</p>
-          </a>
-          <a class="lookup-card" href="gpa.html">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 6h6M9 11h.01M12 11h.01M15 11h.01M9 15h.01M12 15h.01M15 15h.01M9 18h6"/></svg>
-            <h3>GPA Calculator</h3>
-            <p>Term, cumulative and target GPA in one place.</p>
-          </a>
-        </div>
+        <dl class="hero-stats">
+          <div><dt>Years of grade data</dt><dd class="num" data-count="years">–</dd></div>
+          <div><dt>Courses analysed</dt><dd class="num" data-count="totalCourses">–</dd></div>
+          <div><dt>Student grades</dt><dd class="num" data-count="gradeRecords" data-compact>–</dd></div>
+          <div><dt>Instructors</dt><dd class="num" data-count="instructors">–</dd></div>
+        </dl>
       </div>
     </section>
 
-    <!-- A story through numbers -->
-    <section class="numbers">
-      <div class="container">
-        <h2 class="sec-title">A story through numbers</h2>
-        <div class="numbers-grid">
-          <div class="number"><strong class="num" data-count="years">0</strong><span>Years of grade data</span></div>
-          <div class="number"><strong class="num" data-count="totalCourses">0</strong><span>Courses analysed</span></div>
-          <div class="number"><strong class="num" data-count="gradeRecords">0</strong><span>Grade records</span></div>
-          <div class="number"><strong class="num" data-count="instructors">0</strong><span>Instructors</span></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Hardest / easiest -->
+    <!-- Difficulty spectrum ---------------------------------------------- -->
     <section class="section">
       <div class="container">
         <div class="section-row">
           <div class="section-head">
-            <h2 class="sec-title">Hardest and easiest courses</h2>
-            <p>Ranked by historical average GPA.</p>
+            <span class="eyebrow">The spectrum</span>
+            <h2>Every course, from hardest to easiest.</h2>
+            <p>Each dot is one course, placed by its average GPA over its last five years. Hover a dot to see which course it is.</p>
           </div>
-          <a class="link-arrow" href="explorer.html">View all courses <span class="btn-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <div class="legend">
+            <span><i style="background:var(--hard)"></i>Hard</span>
+            <span><i style="background:var(--medium)"></i>Medium</span>
+            <span><i style="background:var(--easy)"></i>Easy</span>
+          </div>
+        </div>
+        <div class="spectrum-filters row" id="spectrum-filters" role="group" aria-label="Highlight a field"></div>
+        <div class="spectrum chart" id="spectrum"><div class="skeleton skeleton-block"></div></div>
+        <div class="spectrum-ends" aria-hidden="true"><span>← Harder</span><span>Easier →</span></div>
+      </div>
+    </section>
+
+    <!-- Tool index -------------------------------------------------------- -->
+    <section class="section">
+      <div class="container index-layout">
+        <div class="section-head index-head">
+          <span class="eyebrow">What you can do</span>
+          <h2>Six tools, one goal: a semester that works.</h2>
+          <p>Start with a single course, or build the whole term and see what it adds up to.</p>
+        </div>
+        <ol class="tool-index" role="list">
+          <li><a href="pages/predict.html"><span class="ti-num">01</span><span class="ti-body"><strong>Difficulty Predictor</strong><span>Predicted GPA, drop rate and difficulty for a course, term and instructor.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="pages/planner.html"><span class="ti-num">02</span><span class="ti-body"><strong>Semester Planner</strong><span>Combine courses and see your expected term GPA and workload.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="pages/explorer.html"><span class="ti-num">03</span><span class="ti-body"><strong>Course Explorer</strong><span>Filter thousands of courses by subject, level, credits and difficulty.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="pages/compare.html"><span class="ti-num">04</span><span class="ti-body"><strong>Compare Courses</strong><span>Put two or three options side by side before you choose.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="pages/gpa.html"><span class="ti-num">05</span><span class="ti-body"><strong>GPA Calculator</strong><span>Term GPA, cumulative GPA, and the grade you need to hit a target.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+          <li><a href="pages/tools.html"><span class="ti-num">06</span><span class="ti-body"><strong>Study Tools</strong><span>A focus timer, a deadline tracker and a to-do list, saved in your browser.</span></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Hardest / most forgiving ----------------------------------------- -->
+    <section class="section section-tint">
+      <div class="container">
+        <div class="section-row">
+          <div class="section-head">
+            <span class="eyebrow">Rankings</span>
+            <h2>Where students struggle, and where they don't.</h2>
+            <p>Large courses only (500+ students in the last five years), ranked by average GPA.</p>
+          </div>
+          <a class="link-arrow" href="pages/insights.html">More in Insights <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
         <div class="grid grid-2">
-          <div>
-            <h3 class="rank-title">Hardest</h3>
-            <div class="table-wrap">
-              <table class="table">
-                <thead><tr><th>Course</th><th>Avg GPA</th><th>DFW</th><th>Level</th></tr></thead>
-                <tbody id="hardest"><tr><td colspan="4"><div class="skeleton skeleton-line"></div></td></tr></tbody>
-              </table>
-            </div>
+          <div class="panel">
+            <h3 class="panel-title">Hardest</h3>
+            <ol class="rank-list" id="hardest" role="list"><li><div class="skeleton skeleton-line"></div></li></ol>
           </div>
-          <div>
-            <h3 class="rank-title">Easiest</h3>
-            <div class="table-wrap">
-              <table class="table">
-                <thead><tr><th>Course</th><th>Avg GPA</th><th>DFW</th><th>Level</th></tr></thead>
-                <tbody id="easiest"><tr><td colspan="4"><div class="skeleton skeleton-line"></div></td></tr></tbody>
-              </table>
-            </div>
+          <div class="panel">
+            <h3 class="panel-title">Most forgiving</h3>
+            <ol class="rank-list" id="easiest" role="list"><li><div class="skeleton skeleton-line"></div></li></ol>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Explore more (label cards) -->
-    <section class="section section-alt">
+    <!-- How it works ------------------------------------------------------ -->
+    <section class="section">
       <div class="container">
         <div class="section-head">
-          <h2 class="sec-title">Explore CourseWise</h2>
+          <span class="eyebrow">How a prediction is made</span>
+          <h2>History in, a clear estimate out.</h2>
         </div>
-        <div class="grid grid-3">
-          <a class="label-card label-navy" href="insights.html">
-            <img src="assets/images/unidiamond3.png" alt="" aria-hidden="true">
-            <div class="label-card-body">
-              <h3>Insights</h3>
-              <p>Grade trends across years, subjects, levels and terms.</p>
-              <span class="label-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </a>
-          <a class="label-card label-blue" href="model.html">
-            <img src="assets/images/unidiamond3.png" alt="" aria-hidden="true">
-            <div class="label-card-body">
-              <h3>How It Works</h3>
-              <p>The data, features and machine learning model behind each prediction.</p>
-              <span class="label-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </a>
-          <a class="label-card label-purple" href="tools.html">
-            <img src="assets/images/unidiamond3.png" alt="" aria-hidden="true">
-            <div class="label-card-body">
-              <h3>Study Tools</h3>
-              <p>A focus timer, deadline tracker and to-do list for the semester.</p>
-              <span class="label-card-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-            </div>
-          </a>
-        </div>
+        <ol class="steps" role="list">
+          <li>
+            <span class="step-num">01</span>
+            <h3>Look back</h3>
+            <p>Grade distributions for every course, instructor and term since <span data-meta="firstYear">2005</span>, cleaned and merged by section.</p>
+          </li>
+          <li>
+            <span class="step-num">02</span>
+            <h3>Learn the pattern</h3>
+            <p>A model learns how course history, instructor, term and class size shape results, then is tested on terms it never saw.</p>
+          </li>
+          <li>
+            <span class="step-num">03</span>
+            <h3>Plan with it</h3>
+            <p>Typical error is about <strong id="model-mae">±0.15</strong> GPA points per course. Good enough to compare options and balance a term.</p>
+          </li>
+        </ol>
+        <a class="link-arrow" href="pages/model.html">Read how the model works <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ --------------------------------------------------------------- -->
     <section class="section">
       <div class="container faq">
-        <h2 class="sec-title">Frequently asked questions</h2>
+        <div class="section-head">
+          <span class="eyebrow">Questions</span>
+          <h2>Good to know.</h2>
+          <p>Something else? <a href="pages/contact.html">Send us a note.</a></p>
+        </div>
         <div class="accordion">
           <div class="acc-item">
             <button class="acc-trigger" aria-expanded="false">What does "difficulty" mean here?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
-            <div class="acc-panel"><div><p>Difficulty is based on the average GPA and the DFW rate (the share of students who get a D, an F or withdraw). Courses are grouped into Easy, Medium and Hard.</p></div></div>
+            <div class="acc-panel"><div><p>Courses are compared with all other courses in the same year. The lowest third by average GPA is Hard, the middle third Medium and the top third Easy. Comparing within a year keeps grade inflation from making everything look easy.</p></div></div>
           </div>
           <div class="acc-item">
             <button class="acc-trigger" aria-expanded="false">Does it predict my own grade?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
-            <div class="acc-panel"><div><p>No. It predicts how a course section is likely to go on average. Your own result depends on your preparation, effort and circumstances.</p></div></div>
+            <div class="acc-panel"><div><p>No. It predicts how a course offering goes on average. Your own result depends on your preparation, effort and circumstances.</p></div></div>
           </div>
           <div class="acc-item">
             <button class="acc-trigger" aria-expanded="false">Where does the data come from?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
-            <div class="acc-panel"><div><p>The model is trained on publicly released university grade distribution datasets. See <a href="model.html">How It Works</a> for details.</p></div></div>
+            <div class="acc-panel"><div><p>From public grade distributions of the University of Illinois Urbana-Champaign, released by Prof. Wade Fagen-Ulmschneider. University of Sharjah grade data is not public, so course codes follow the Illinois catalogue. The same pipeline works on any university's data.</p></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-trigger" aria-expanded="false">What is the DFW rate?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+            <div class="acc-panel"><div><p>The share of enrolled students who finished with a D or an F, or withdrew. It shows how many students did not pass comfortably, which the average GPA alone can hide.</p></div></div>
           </div>
           <div class="acc-item">
             <button class="acc-trigger" aria-expanded="false">Is my data stored anywhere?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
-            <div class="acc-panel"><div><p>No. Plans, deadlines and settings are saved only in your browser's local storage.</p></div></div>
+            <div class="acc-panel"><div><p>No. Plans, deadlines and settings stay in your own browser's local storage. Nothing is sent to a server.</p></div></div>
           </div>
         </div>
       </div>
