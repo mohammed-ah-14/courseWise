@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights · CourseWise</title>
+  <meta name="description" content="Grade trends across years, fields, course levels and terms.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/insights.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Insights</li></ol></nav>
+        <h1>Insights</h1>
+        <p class="lead">What two decades of grades say about difficulty: across years, fields, course levels and terms.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <ol class="findings" id="findings" role="list">
+          <li class="skeleton" style="height:150px"></li><li class="skeleton" style="height:150px"></li>
+          <li class="skeleton" style="height:150px"></li><li class="skeleton" style="height:150px"></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container stack" style="gap:var(--s5)">
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 class="panel-title">The university over time</h2>
+              <p class="subtle result-small">Student-weighted average of every course. The last year is partial.</p>
+            </div>
+            <div class="row">
+              <div class="tabs" role="tablist" aria-label="Metric">
+                <button class="tab" role="tab" aria-selected="true" aria-controls="year-chart" data-metric="gpa">Avg GPA</button>
+                <button class="tab" role="tab" aria-selected="false" aria-controls="year-chart" data-metric="dfw">DFW rate</button>
+              </div>
+              <label class="visually-hidden" for="from">From year</label>
+              <select class="select input-sm year-select" id="from"></select>
+              <span class="subtle">to</span>
+              <label class="visually-hidden" for="to">To year</label>
+              <select class="select input-sm year-select" id="to"></select>
+            </div>
+          </div>
+          <div class="chart" id="year-chart" role="tabpanel"></div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">By field</h2><span class="subtle result-small" data-recent></span></div>
+            <div id="by-group"></div>
+          </div>
+          <div class="stack">
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">By course level</h2><span class="subtle result-small">Avg GPA</span></div>
+              <div class="chart" id="by-level" style="min-height:180px"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">By term</h2><span class="subtle result-small">DFW rate</span></div>
+              <div class="chart" id="by-term" style="min-height:180px"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">Hardest subjects</h2><span class="subtle result-small">Avg GPA</span></div>
+            <div id="hard-subjects"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">Easiest subjects</h2><span class="subtle result-small">Avg GPA</span></div>
+            <div id="easy-subjects"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div>
+              <h2 class="panel-title">How DFW rates are spread</h2>
+              <p class="subtle result-small">Number of courses in each DFW band. Most courses lose very few students; a long tail loses many.</p>
+            </div>
+          </div>
+          <div class="chart" id="dfw-hist"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid grid-2">
+        <div>
+          <h2 class="table-title">Lowest average GPA</h2>
+          <div class="table-wrap"><table class="table"><thead><tr><th>Course</th><th class="num">Avg GPA</th><th class="num">DFW</th><th class="num">Students</th></tr></thead><tbody id="top-hard"></tbody></table></div>
+        </div>
+        <div>
+          <h2 class="table-title">Highest DFW rate</h2>
+          <div class="table-wrap"><table class="table"><thead><tr><th>Course</th><th class="num">DFW</th><th class="num">Avg GPA</th><th class="num">Students</th></tr></thead><tbody id="top-dfw"></tbody></table></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

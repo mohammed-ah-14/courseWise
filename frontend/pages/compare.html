@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compare Courses · CourseWise</title>
+  <meta name="description" content="Compare two or three courses side by side.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/compare.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Compare Courses</li></ol></nav>
+        <h1>Compare Courses</h1>
+        <p class="lead">Choosing between electives, or between two sections of the same requirement? Put up to three side by side.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container stack" style="gap:var(--s6)">
+        <div class="compare-slots" id="slots"></div>
+        <div id="verdict"></div>
+        <div id="compare-body" hidden>
+          <div class="table-wrap">
+            <table class="table compare-table" id="compare-table"></table>
+          </div>
+          <div class="grid grid-2" style="margin-top:var(--s5)">
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">Grade mix</h2><div class="legend" id="legend-grades"></div></div>
+              <div class="chart" id="chart-grades"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">Average GPA, last 10 years</h2><div class="legend" id="legend-trend"></div></div>
+              <div class="chart" id="chart-trend"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

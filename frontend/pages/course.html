@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course · CourseWise</title>
+  <meta name="description" content="Grade distribution, GPA trend, instructors and predicted difficulty for one course.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/course.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li><a href="explorer.html">Explorer</a></li><li aria-current="page" id="crumb">Course</li></ol></nav>
+        <div class="course-head">
+          <div>
+            <span class="eyebrow" id="c-eyebrow">Loading</span>
+            <h1 id="c-title"><span class="skeleton skeleton-line" style="display:block;width:320px;height:40px"></span></h1>
+            <div class="row course-tags" id="c-tags"></div>
+          </div>
+          <div class="row course-actions" id="c-actions" hidden>
+            <button class="btn btn-primary" type="button" id="add-planner">Add to planner</button>
+            <button class="btn btn-outline" type="button" id="add-compare">Compare</button>
+            <button class="btn btn-ghost btn-icon" type="button" id="copy-link" aria-label="Copy link"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="course-body">
+      <section class="section">
+        <div class="container grid course-overview">
+          <div class="panel">
+            <h2 class="panel-title">Where it sits on the GPA scale</h2>
+            <div id="c-scale"><div class="skeleton" style="height:70px"></div></div>
+            <p class="course-summary" id="c-summary"></p>
+          </div>
+          <dl class="stats" id="c-stats"></dl>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container stack">
+          <div class="grid course-charts">
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">Grade distribution</h2><span class="subtle" id="grades-note" style="font-size:var(--fs-xs)"></span></div>
+              <div class="chart" id="chart-grades"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">By term</h2><span class="subtle" style="font-size:var(--fs-xs)">Average GPA</span></div>
+              <div class="chart" id="chart-terms"></div>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">Average GPA over time</h2></div>
+              <div class="chart" id="chart-gpa"></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2 class="panel-title">DFW rate over time</h2></div>
+              <div class="chart" id="chart-dfw"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Instructors</span>
+            <h2>Who teaches it</h2>
+            <p>Last five years the course ran. Click a column to sort.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="table" id="instructors">
+              <thead><tr>
+                <th data-sort="name">Instructor</th>
+                <th class="num" data-sort="offerings">Terms</th>
+                <th class="num" data-sort="students" aria-sort="descending">Students</th>
+                <th class="num" data-sort="gpa">Avg GPA</th>
+                <th class="num" data-sort="dfw">DFW</th>
+                <th data-sort="last">Last taught</th>
+              </tr></thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="pred-section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Model check</span>
+            <h2>Predicted vs. what happened</h2>
+            <p>These terms were held out from training, so this is an honest test of the model on this course.</p>
+          </div>
+          <div class="table-wrap">
+            <table class="table">
+              <thead><tr><th>Term</th><th>Instructor</th><th class="num">Students</th><th class="num">Predicted GPA</th><th class="num">Actual GPA</th><th class="num">Error</th><th>Predicted</th><th>Actual</th></tr></thead>
+              <tbody id="predictions"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

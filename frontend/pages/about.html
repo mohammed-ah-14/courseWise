@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About · CourseWise</title>
+  <meta name="description" content="The story, team and data behind CourseWise.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">About</li></ol></nav>
+        <h1>About CourseWise</h1>
+        <p class="lead">A student project at the University of Sharjah, built for the Machine Learning and Web Programming courses.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-story">
+        <div class="section-head">
+          <span class="eyebrow">Why</span>
+          <h2>Registration shouldn't be a guess.</h2>
+        </div>
+        <div class="prose">
+          <p>Every term, students pick courses with very little to go on: a friend's opinion, a forum thread, a rumour about one instructor. A single hard course in the wrong term can pull a GPA down for years.</p>
+          <p>Universities already hold the answer in their grade records. CourseWise turns those records into something a student can use: how a course has graded in the past, how it is likely to grade next term, and what a whole semester adds up to.</p>
+          <p>Because University of Sharjah grade data is not public, the model is trained on the open grade distributions of the University of Illinois Urbana-Champaign. The pipeline is built so that any university's data could be dropped in.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Team</span>
+          <h2>Who built it</h2>
+        </div>
+        <ul class="team" role="list">
+          <!-- Edit names and roles here. -->
+          <li class="member">
+            <span class="avatar" aria-hidden="true">MH</span>
+            <strong>MOHAMMED ABDUL HARIS</strong>
+            <span class="subtle">U23100877</span>
+          </li>
+          <li class="member">
+            <span class="avatar" aria-hidden="true">MK</span>
+            <strong>MOHAMED KHALFAN</strong>
+            <span class="subtle">U24108234</span>
+          </li>
+          <li class="member">
+            <span class="avatar" aria-hidden="true">HM</span>
+            <strong>HAMAD MATAR</strong>
+            <span class="subtle">U24109446</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-split">
+        <div class="section-head">
+          <span class="eyebrow">How it came together</span>
+          <h2>Four stages</h2>
+        </div>
+        <ol class="vtimeline" role="list">
+          <li><span class="vt-step">01</span><div><h3>Question</h3><p>Can past grades predict how hard a course will be next term, well enough to help a student plan?</p></div></li>
+          <li><span class="vt-step">02</span><div><h3>Data</h3><p>Two decades of grade distributions, cleaned, merged by section and joined with the course catalogue.</p></div></li>
+          <li><span class="vt-step">03</span><div><h3>Model</h3><p>History features without leakage, nine model types, time-based validation and one final test on unseen years.</p></div></li>
+          <li><span class="vt-step">04</span><div><h3>Website</h3><p>A static site in plain HTML, CSS and JavaScript that reads the exported predictions. No frameworks, no server.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container about-split">
+        <div class="section-head">
+          <span class="eyebrow">Credits</span>
+          <h2>Data and tools</h2>
+        </div>
+        <dl class="credits">
+          <div><dt>Grade data</dt><dd>University of Illinois grade distributions, compiled by Prof. Wade Fagen-Ulmschneider (public dataset).</dd></div>
+          <div><dt>Course catalogue</dt><dd>University of Illinois course catalogue, same source, for credit hours and Gen-Ed categories.</dd></div>
+          <div><dt>Machine learning</dt><dd>Python, pandas, scikit-learn, CatBoost and SHAP.</dd></div>
+          <div><dt>Website</dt><dd>HTML, CSS and JavaScript with hand-written SVG charts.</dd></div>
+          <div><dt>Brand</dt><dd>29LT Bukra typeface, campus photograph and pattern from the University of Sharjah.</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

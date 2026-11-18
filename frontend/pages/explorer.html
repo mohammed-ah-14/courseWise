@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Explorer · CourseWise</title>
+  <meta name="description" content="Search and filter every course by subject, level, credits and difficulty.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/explorer.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Course Explorer</li></ol></nav>
+        <h1>Course Explorer</h1>
+        <p class="lead">Every course offered since 2016, with its average GPA and drop rate over the last five years it ran.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container explorer">
+        <aside class="filters" aria-label="Filters">
+          <div class="spread">
+            <h2 class="filters-title">Filters</h2>
+            <button class="btn btn-ghost btn-sm" type="button" id="reset">Reset</button>
+          </div>
+
+          <div class="field">
+            <label for="f-group">Field</label>
+            <select class="select" id="f-group"><option value="">All fields</option></select>
+          </div>
+          <div class="field">
+            <label for="f-subject">Subject</label>
+            <select class="select" id="f-subject"><option value="">All subjects</option></select>
+          </div>
+          <fieldset class="field">
+            <legend class="field-label">Level</legend>
+            <div class="check-list" id="f-level">
+              <label class="check"><input type="checkbox" value="100"> 100 level</label>
+              <label class="check"><input type="checkbox" value="200"> 200 level</label>
+              <label class="check"><input type="checkbox" value="300"> 300 level</label>
+              <label class="check"><input type="checkbox" value="400"> 400 level</label>
+              <label class="check"><input type="checkbox" value="500"> Graduate (500+)</label>
+            </div>
+          </fieldset>
+          <fieldset class="field">
+            <legend class="field-label">Difficulty</legend>
+            <div class="row" id="f-difficulty">
+              <button class="chip" type="button" aria-pressed="false" data-value="Easy">Easy</button>
+              <button class="chip" type="button" aria-pressed="false" data-value="Medium">Medium</button>
+              <button class="chip" type="button" aria-pressed="false" data-value="Hard">Hard</button>
+            </div>
+          </fieldset>
+          <div class="field">
+            <label for="f-credits">Credit hours</label>
+            <select class="select" id="f-credits">
+              <option value="">Any</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5 or more</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-gened">Gen-Ed category</label>
+            <select class="select" id="f-gened"><option value="">Any</option></select>
+          </div>
+          <label class="check"><input type="checkbox" id="f-predicted"> Only courses with a prediction</label>
+        </aside>
+
+        <div class="results">
+          <div class="toolbar">
+            <div class="ac toolbar-search">
+              <label class="visually-hidden" for="q">Search courses</label>
+              <input class="input" id="q" type="search" placeholder="Search by code or title">
+            </div>
+            <label class="visually-hidden" for="sort">Sort by</label>
+            <select class="select toolbar-sort" id="sort">
+              <option value="code">Sort: Course code</option>
+              <option value="gpa-asc">Sort: Hardest first (GPA)</option>
+              <option value="gpa-desc">Sort: Easiest first (GPA)</option>
+              <option value="dfw-desc">Sort: Highest DFW</option>
+              <option value="size-desc">Sort: Largest classes</option>
+            </select>
+            <div class="view-toggle" role="group" aria-label="View">
+              <button class="btn btn-ghost btn-icon" type="button" data-view="grid" aria-pressed="true" aria-label="Card view"></button>
+              <button class="btn btn-ghost btn-icon" type="button" data-view="table" aria-pressed="false" aria-label="Table view"></button>
+            </div>
+          </div>
+          <p class="result-count subtle" id="count" aria-live="polite">Loading courses…</p>
+          <div id="results"><div class="grid grid-3"><div class="skeleton skeleton-block"></div><div class="skeleton skeleton-block"></div><div class="skeleton skeleton-block"></div></div></div>
+          <div class="load-more"><button class="btn btn-outline" type="button" id="more" hidden>Show more</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

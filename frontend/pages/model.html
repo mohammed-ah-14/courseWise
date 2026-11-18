@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How It Works · CourseWise</title>
+  <meta name="description" content="The data, features and machine learning models behind each CourseWise prediction.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/model.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">How It Works</li></ol></nav>
+        <h1>How It Works</h1>
+        <p class="lead">In short: we look at how a course, its instructor and its subject have graded in the past, and a model turns that history into an estimate for the next term.</p>
+      </div>
+    </section>
+
+    <!-- Pipeline -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The pipeline</span>
+          <h2>From raw grades to a prediction</h2>
+        </div>
+        <ol class="pipeline" role="list">
+          <li><span class="pipe-num">1</span><strong>Raw grades</strong><span>One row per section: counts of A+ to F and withdrawals.</span></li>
+          <li><span class="pipe-num">2</span><strong>Clean &amp; merge</strong><span>Sections of the same course, instructor and term become one offering.</span></li>
+          <li><span class="pipe-num">3</span><strong>History features</strong><span>Only earlier terms are used, so the model never sees the future.</span></li>
+          <li><span class="pipe-num">4</span><strong>Train &amp; compare</strong><span>Nine model types, tuned with time-based cross-validation.</span></li>
+          <li><span class="pipe-num">5</span><strong>Test once</strong><span>The winner is scored on <span data-split="test"></span> terms it never saw.</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Time split -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Splitting by time</span>
+          <h2>Trained on the past, tested on the future</h2>
+          <p>A random split would let the model peek at later terms. Splitting by year is how it would be used for real.</p>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section">
+      <div class="container stack" style="gap:var(--s5)">
+        <div class="section-row">
+          <div class="section-head">
+            <span class="eyebrow">Results</span>
+            <h2>Four prediction tasks</h2>
+            <p>Each task was trained separately. The tables show validation scores; the headline numbers are on the held-out test years.</p>
+          </div>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Task" id="task-tabs"></div>
+        <div id="task-panels"><div class="skeleton skeleton-block"></div></div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Inputs</span>
+          <h2>What the model looks at</h2>
+          <p>94 inputs in total, grouped below. Grade counts of the term being predicted are never used as inputs.</p>
+        </div>
+        <div class="table-wrap">
+          <table class="table wrap-cells">
+            <thead><tr><th>Group</th><th>Examples</th><th class="num">Inputs</th></tr></thead>
+            <tbody>
+              <tr><td>Course</td><td>Course number and level, credit hours, Gen-Ed category, keywords in the title (intro, lab, honors…)</td><td class="num">18</td></tr>
+              <tr><td>Term &amp; class</td><td>Year, term, COVID years, number of sections, online or in person, schedule type</td><td class="num">6</td></tr>
+              <tr><td>Course history</td><td>Past average GPA and DFW, recency-weighted trend, share of A grades, spread between terms</td><td class="num">18</td></tr>
+              <tr><td>Instructor history</td><td>The instructor's past GPA and DFW in all their courses, and how far they grade above or below average</td><td class="num">14</td></tr>
+              <tr><td>Course + instructor</td><td>How this instructor has graded this specific course before</td><td class="num">12</td></tr>
+              <tr><td>Subject &amp; university</td><td>Subject and subject-level averages, the university-wide trend (grade inflation)</td><td class="num">11</td></tr>
+              <tr><td>Combined estimates</td><td>Flags for a new course or instructor, and history shrunk toward the parent group when there are few past students (pair → course → subject)</td><td class="num">12</td></tr>
+              <tr><td>Identity</td><td>Subject, department group, instructor (target-encoded without leakage)</td><td class="num">3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data -->
+    <section class="section">
+      <div class="container grid grid-2 model-notes">
+        <div>
+          <span class="eyebrow">Data</span>
+          <h2>The dataset</h2>
+          <p>Public grade distributions of the University of Illinois Urbana-Champaign, <span data-meta="firstYear"></span>–<span data-meta="lastYear"></span>, compiled by Prof. Wade Fagen-Ulmschneider, joined with the course catalogue for credit hours and Gen-Ed categories.</p>
+          <dl class="data-facts" id="data-facts"></dl>
+        </div>
+        <div>
+          <span class="eyebrow">Limits</span>
+          <h2>What to keep in mind</h2>
+          <ul class="limits" role="list">
+            <li><strong>Averages, not individuals.</strong> A predicted 3.0 means the class averages 3.0. Many students will be above or below.</li>
+            <li><strong>New courses and new instructors</strong> have little history, so their predictions lean on the subject average and are less certain.</li>
+            <li><strong>Different university.</strong> The data is from Illinois. Grading cultures differ, so numbers would shift for Sharjah, though the method stays the same.</li>
+            <li><strong>Fairness.</strong> Instructor names are used because they improve accuracy. The site shows them only to describe past courses, not to rank people.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>
