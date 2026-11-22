@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPA Calculator · CourseWise</title>
+  <meta name="description" content="Term GPA, cumulative GPA and target GPA calculators.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/gpa.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">GPA Calculator</li></ol></nav>
+        <h1>GPA Calculator</h1>
+        <p class="lead">Work out a term GPA, see how it moves your cumulative GPA, or find the term GPA you need to reach a target.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container gpa-layout">
+        <div class="stack">
+          <div class="tabs" role="tablist" aria-label="Calculator">
+            <button class="tab" role="tab" aria-selected="true" aria-controls="tab-term" id="t-term">Term GPA</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="tab-cum" id="t-cum">Cumulative</button>
+            <button class="tab" role="tab" aria-selected="false" aria-controls="tab-target" id="t-target">Target</button>
+          </div>
+
+          <!-- Term -->
+          <div class="panel" id="tab-term" role="tabpanel" aria-labelledby="t-term">
+            <div class="gpa-rows-head" aria-hidden="true"><span>Course</span><span>Credits</span><span>Grade</span><span></span></div>
+            <ul class="gpa-rows" id="term-rows" role="list"></ul>
+            <div class="spread gpa-foot">
+              <button class="btn btn-outline btn-sm" type="button" id="add-row">Add course</button>
+              <button class="btn btn-ghost btn-sm" type="button" id="reset-rows">Reset</button>
+            </div>
+            <dl class="gpa-result">
+              <div class="stat"><dt>Term GPA</dt><dd class="result-big" id="term-gpa">–</dd></div>
+              <div class="stat"><dt>Credit hours</dt><dd id="term-credits">0</dd></div>
+              <div class="stat"><dt>Quality points</dt><dd id="term-points">0</dd></div>
+            </dl>
+          </div>
+
+          <!-- Cumulative -->
+          <form class="panel" id="tab-cum" role="tabpanel" aria-labelledby="t-cum" hidden novalidate>
+            <div class="grid grid-2">
+              <div class="field"><label for="c-cgpa">Current CGPA</label><input class="input num" id="c-cgpa" type="number" min="0" max="4" step="0.01" placeholder="3.20"></div>
+              <div class="field"><label for="c-done">Completed credit hours</label><input class="input num" id="c-done" type="number" min="0" step="1" placeholder="45"></div>
+              <div class="field"><label for="c-term">This term's GPA</label><input class="input num" id="c-term" type="number" min="0" max="4" step="0.01" placeholder="3.50"></div>
+              <div class="field"><label for="c-credits">This term's credit hours</label><input class="input num" id="c-credits" type="number" min="0" step="1" placeholder="15"></div>
+            </div>
+            <button class="btn btn-ghost btn-sm" type="button" id="use-term">Use my Term GPA tab result</button>
+            <p class="error" id="cum-error" role="alert"></p>
+            <dl class="gpa-result">
+              <div class="stat"><dt>New CGPA</dt><dd class="result-big" id="cum-result">–</dd></div>
+              <div class="stat"><dt>Change</dt><dd id="cum-delta">–</dd></div>
+              <div class="stat"><dt>Total hours</dt><dd id="cum-hours">–</dd></div>
+            </dl>
+          </form>
+
+          <!-- Target -->
+          <form class="panel" id="tab-target" role="tabpanel" aria-labelledby="t-target" hidden novalidate>
+            <div class="grid grid-2">
+              <div class="field"><label for="g-cgpa">Current CGPA</label><input class="input num" id="g-cgpa" type="number" min="0" max="4" step="0.01" placeholder="2.85"></div>
+              <div class="field"><label for="g-done">Completed credit hours</label><input class="input num" id="g-done" type="number" min="0" step="1" placeholder="60"></div>
+              <div class="field"><label for="g-target">Target CGPA</label><input class="input num" id="g-target" type="number" min="0" max="4" step="0.01" placeholder="3.00"></div>
+              <div class="field"><label for="g-credits">Credit hours next term</label><input class="input num" id="g-credits" type="number" min="1" step="1" placeholder="15"></div>
+            </div>
+            <p class="error" id="target-error" role="alert"></p>
+            <div class="target-result" id="target-result">
+              <span class="stat-label subtle">Term GPA you need</span>
+              <strong class="result-big" id="target-need">–</strong>
+              <p id="target-text" class="muted"></p>
+            </div>
+          </form>
+        </div>
+
+        <aside class="panel scale-table">
+          <h2 class="panel-title">Grade scale</h2>
+          <table class="table compact">
+            <thead><tr><th>Grade</th><th class="num">Points</th></tr></thead>
+            <tbody id="scale-body"></tbody>
+          </table>
+          <p class="subtle result-small">Check your own university's scale; some use 4.3 for A+.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

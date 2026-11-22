@@ -1,0 +1,104 @@
+{
+  "task": "dfw",
+  "model": "catboost",
+  "method": "shap",
+  "importance": [
+    {
+      "feature": "shrunk_guess_dfw",
+      "importance": 0.006142
+    },
+    {
+      "feature": "crs_past_dfw",
+      "importance": 0.003378
+    },
+    {
+      "feature": "glob_same_term_last_gpa",
+      "importance": 0.003074
+    },
+    {
+      "feature": "best_guess_dfw",
+      "importance": 0.002631
+    },
+    {
+      "feature": "pair_last_gpa",
+      "importance": 0.00257
+    },
+    {
+      "feature": "crs_ewm_dfw",
+      "importance": 0.002332
+    },
+    {
+      "feature": "instructor",
+      "importance": 0.002046
+    },
+    {
+      "feature": "number",
+      "importance": 0.001999
+    },
+    {
+      "feature": "ins_ewm_dfw",
+      "importance": 0.001727
+    },
+    {
+      "feature": "glob_past_gpa",
+      "importance": 0.001724
+    },
+    {
+      "feature": "shrunk_guess_gpa",
+      "importance": 0.001658
+    },
+    {
+      "feature": "sublvl_past_dfw",
+      "importance": 0.001558
+    },
+    {
+      "feature": "pair_shrunk_dev",
+      "importance": 0.001472
+    },
+    {
+      "feature": "pair_ewm_dfw",
+      "importance": 0.00142
+    },
+    {
+      "feature": "is_online",
+      "importance": 0.001358
+    },
+    {
+      "feature": "crs_recent_gpa",
+      "importance": 0.001342
+    },
+    {
+      "feature": "glob_recent_gpa",
+      "importance": 0.001297
+    },
+    {
+      "feature": "level",
+      "importance": 0.001101
+    },
+    {
+      "feature": "ins_past_fail_rate",
+      "importance": 0.001024
+    },
+    {
+      "feature": "ins_past_dfw",
+      "importance": 0.000981
+    }
+  ],
+  "example": {
+    "course_id": "CHEM102",
+    "year_term": "2025-fa",
+    "instructor": "Marville, Kelly",
+    "contributions": {
+      "shrunk_guess_dfw": 0.059339,
+      "pair_ewm_dfw": 0.013437,
+      "shrunk_guess_gpa": 0.012462,
+      "best_guess_dfw": 0.010061,
+      "crs_recent_gpa": 0.009673,
+      "crs_ewm_dfw": 0.008923,
+      "glob_same_term_last_gpa": 0.008753,
+      "ins_ewm_dfw": 0.008737,
+      "pair_shrunk_dev": 0.007555,
+      "crs_past_instructors": -0.007146
+    }
+  }
+}

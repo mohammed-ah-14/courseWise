@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact · CourseWise</title>
+  <meta name="description" content="Send feedback or report wrong course data.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/contact.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Contact</li></ol></nav>
+        <h1>Contact &amp; feedback</h1>
+        <p class="lead">Found a mistake, have an idea, or want to tell us whether a prediction matched your term? We read everything.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact">
+        <form class="panel stack" id="contact-form" novalidate>
+          <div class="grid grid-2">
+            <div class="field">
+              <label for="name">Name</label>
+              <input class="input" id="name" name="name" type="text" autocomplete="name" aria-describedby="name-error">
+              <span class="error" id="name-error" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="email">Email</label>
+              <input class="input" id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-describedby="email-error">
+              <span class="error" id="email-error" role="alert"></span>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="topic">Topic</label>
+            <select class="select" id="topic" name="topic" aria-describedby="topic-error">
+              <option value="">Choose a topic</option>
+              <option>General feedback</option>
+              <option>Wrong or missing course data</option>
+              <option>A prediction was off</option>
+              <option>Feature idea</option>
+              <option>Something is broken</option>
+            </select>
+            <span class="error" id="topic-error" role="alert"></span>
+          </div>
+
+          <fieldset class="field">
+            <legend class="field-label">How useful is CourseWise? <span class="subtle">(optional)</span></legend>
+            <div class="stars" id="stars" role="radiogroup" aria-label="Rating out of 5"></div>
+          </fieldset>
+
+          <div class="field">
+            <div class="spread"><label for="message">Message</label><span class="hint num" id="counter">0 / 1000</span></div>
+            <textarea class="textarea" id="message" name="message" maxlength="1000" aria-describedby="message-error"></textarea>
+            <span class="error" id="message-error" role="alert"></span>
+          </div>
+
+          <div class="field">
+            <label class="check"><input type="checkbox" id="agree" aria-describedby="agree-error"> I understand this is a student project and there may be no reply.</label>
+            <span class="error" id="agree-error" role="alert"></span>
+          </div>
+
+          <button class="btn btn-primary" type="submit">Send message</button>
+        </form>
+
+        <div class="panel stack" id="contact-done" hidden tabindex="-1">
+          <span class="done-mark" aria-hidden="true"></span>
+          <h2>Thank you.</h2>
+          <p id="done-text">Your message was recorded.</p>
+          <p class="subtle result-small">This demo site has no server, so messages are not actually sent anywhere.</p>
+          <div><button class="btn btn-outline" type="button" id="again">Send another</button></div>
+        </div>
+
+        <aside class="contact-side">
+          <div>
+            <h2 class="panel-title">Reporting wrong data</h2>
+            <p>Include the course code and term, and what you expected to see. Course data comes from a public dataset, so we can check it against the source.</p>
+          </div>
+          <div>
+            <h2 class="panel-title">About predictions</h2>
+            <p>Predictions describe a course offering on average. If yours was off, tell us the course, term and instructor. Misses help us find blind spots.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

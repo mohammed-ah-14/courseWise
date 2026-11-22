@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Study Tools · CourseWise</title>
+  <meta name="description" content="A focus timer, a deadline tracker and a to-do list for the semester.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/tools.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Study Tools</li></ol></nav>
+        <h1>Study Tools</h1>
+        <p class="lead">Small tools for the rest of the semester. Everything is saved in this browser only.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container stack" style="gap:var(--s5)">
+        <div class="tabs" role="tablist" aria-label="Tools">
+          <button class="tab" role="tab" aria-selected="true" aria-controls="tool-timer" id="t-timer">Focus timer</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tool-deadlines" id="t-deadlines">Deadlines</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="tool-todo" id="t-todo">To-do</button>
+        </div>
+
+        <!-- Timer -->
+        <div class="panel timer" id="tool-timer" role="tabpanel" aria-labelledby="t-timer">
+          <div class="timer-modes" role="group" aria-label="Mode">
+            <button class="chip" type="button" data-mode="focus" aria-pressed="true">Focus · 25</button>
+            <button class="chip" type="button" data-mode="short" aria-pressed="false">Short break · 5</button>
+            <button class="chip" type="button" data-mode="long" aria-pressed="false">Long break · 15</button>
+          </div>
+          <div class="timer-face">
+            <svg class="timer-ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="54" class="timer-track"/>
+              <circle cx="60" cy="60" r="54" class="timer-progress" id="timer-progress"/>
+            </svg>
+            <div class="timer-center">
+              <span class="timer-time num" id="timer-time" role="timer" aria-live="off">25:00</span>
+              <span class="subtle" id="timer-label">Focus</span>
+            </div>
+          </div>
+          <div class="row timer-controls">
+            <button class="btn btn-primary" type="button" id="timer-start">Start</button>
+            <button class="btn btn-outline" type="button" id="timer-reset">Reset</button>
+            <button class="btn btn-ghost" type="button" id="timer-skip">Skip</button>
+          </div>
+          <p class="subtle timer-count">Focus sessions today: <strong id="timer-sessions">0</strong></p>
+        </div>
+
+        <!-- Deadlines -->
+        <div class="tool-grid" id="tool-deadlines" role="tabpanel" aria-labelledby="t-deadlines" hidden>
+          <form class="panel stack" id="deadline-form" novalidate>
+            <h2 class="panel-title">Add a deadline</h2>
+            <div class="field">
+              <label for="d-title">What is due?</label>
+              <input class="input" id="d-title" type="text" maxlength="80" placeholder="e.g. CS 225 MP3" aria-describedby="d-title-error">
+              <span class="error" id="d-title-error" role="alert"></span>
+            </div>
+            <div class="field">
+              <label for="d-type">Type</label>
+              <select class="select" id="d-type"><option>Assignment</option><option>Exam</option><option>Quiz</option><option>Project</option><option>Other</option></select>
+            </div>
+            <div class="field">
+              <label for="d-date">Due</label>
+              <input class="input" id="d-date" type="datetime-local" aria-describedby="d-date-error">
+              <span class="error" id="d-date-error" role="alert"></span>
+            </div>
+            <button class="btn btn-primary" type="submit">Add deadline</button>
+          </form>
+          <div class="panel">
+            <div class="panel-head"><h2 class="panel-title">Coming up</h2><span class="subtle result-small" id="d-count"></span></div>
+            <ul class="deadline-list" id="deadline-list" role="list"></ul>
+          </div>
+        </div>
+
+        <!-- To-do -->
+        <div class="panel todo" id="tool-todo" role="tabpanel" aria-labelledby="t-todo" hidden>
+          <form class="todo-form" id="todo-form" novalidate>
+            <label class="visually-hidden" for="todo-input">New task</label>
+            <input class="input" id="todo-input" type="text" maxlength="120" placeholder="Add a task and press Enter">
+            <button class="btn btn-primary" type="submit">Add</button>
+          </form>
+          <div class="spread todo-bar">
+            <div class="row" role="group" aria-label="Filter">
+              <button class="chip" type="button" data-filter="all" aria-pressed="true">All</button>
+              <button class="chip" type="button" data-filter="active" aria-pressed="false">Active</button>
+              <button class="chip" type="button" data-filter="done" aria-pressed="false">Done</button>
+            </div>
+            <span class="subtle result-small" id="todo-left"></span>
+          </div>
+          <ul class="todo-list" id="todo-list" role="list"></ul>
+          <button class="btn btn-ghost btn-sm" type="button" id="todo-clear">Clear completed</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

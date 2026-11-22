@@ -1,4 +1,4 @@
-// Runs in <head> before paint to avoid a light/dark flash.
+// This run inside <head> before the page paint, so there is no flash between light and dark.
 (function () {
   var theme;
   try { theme = localStorage.getItem("cw-theme"); } catch (e) {}

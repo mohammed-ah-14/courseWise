@@ -1,0 +1,128 @@
+{
+  "k": 5,
+  "silhouette": 0.347957,
+  "davies_bouldin": 1.163019,
+  "k_scores": [
+    {
+      "k": 2,
+      "inertia": 331938.012569,
+      "silhouette": 0.343689,
+      "davies_bouldin": 1.246978
+    },
+    {
+      "k": 3,
+      "inertia": 263970.069281,
+      "silhouette": 0.321824,
+      "davies_bouldin": 1.31634
+    },
+    {
+      "k": 4,
+      "inertia": 222343.779866,
+      "silhouette": 0.341284,
+      "davies_bouldin": 1.176316
+    },
+    {
+      "k": 5,
+      "inertia": 195972.354031,
+      "silhouette": 0.347957,
+      "davies_bouldin": 1.163019
+    },
+    {
+      "k": 6,
+      "inertia": 177673.479263,
+      "silhouette": 0.277754,
+      "davies_bouldin": 1.237415
+    },
+    {
+      "k": 7,
+      "inertia": 162041.150526,
+      "silhouette": 0.278015,
+      "davies_bouldin": 1.194888
+    },
+    {
+      "k": 8,
+      "inertia": 151729.029312,
+      "silhouette": 0.284201,
+      "davies_bouldin": 1.175124
+    },
+    {
+      "k": 9,
+      "inertia": 143573.10174,
+      "silhouette": 0.287594,
+      "davies_bouldin": 1.253765
+    },
+    {
+      "k": 10,
+      "inertia": 136409.910336,
+      "silhouette": 0.284308,
+      "davies_bouldin": 1.287541
+    }
+  ],
+  "clusters": [
+    {
+      "cluster": 0,
+      "share_A": 0.425256,
+      "share_B": 0.270684,
+      "share_C": 0.131252,
+      "share_D": 0.054461,
+      "share_F": 0.11307,
+      "share_W": 0.005277,
+      "avg_gpa": 2.820244,
+      "dfw_rate": 0.172808,
+      "size": 4093,
+      "name": "High-failure"
+    },
+    {
+      "cluster": 1,
+      "share_A": 0.819898,
+      "share_B": 0.138086,
+      "share_C": 0.025649,
+      "share_D": 0.0068,
+      "share_F": 0.008699,
+      "share_W": 0.000867,
+      "avg_gpa": 3.724221,
+      "dfw_rate": 0.016367,
+      "size": 34154,
+      "name": "Generous"
+    },
+    {
+      "cluster": 2,
+      "share_A": 0.300102,
+      "share_B": 0.354252,
+      "share_C": 0.234969,
+      "share_D": 0.08043,
+      "share_F": 0.025766,
+      "share_W": 0.00448,
+      "avg_gpa": 2.81148,
+      "dfw_rate": 0.110676,
+      "size": 11733,
+      "name": "Strict"
+    },
+    {
+      "cluster": 3,
+      "share_A": 0.467079,
+      "share_B": 0.424091,
+      "share_C": 0.085621,
+      "share_D": 0.012714,
+      "share_F": 0.009282,
+      "share_W": 0.001213,
+      "avg_gpa": 3.310927,
+      "dfw_rate": 0.023208,
+      "size": 27475,
+      "name": "Balanced"
+    },
+    {
+      "cluster": 4,
+      "share_A": 0.51387,
+      "share_B": 0.303006,
+      "share_C": 0.097301,
+      "share_D": 0.025819,
+      "share_F": 0.021408,
+      "share_W": 0.038596,
+      "avg_gpa": 3.286484,
+      "dfw_rate": 0.085823,
+      "size": 4645,
+      "name": "High-withdrawal"
+    }
+  ]
+}

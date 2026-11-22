@@ -1,0 +1,104 @@
+{
+  "task": "high_risk",
+  "model": "xgboost",
+  "method": "shap",
+  "importance": [
+    {
+      "feature": "shrunk_guess_dfw",
+      "importance": 0.745249
+    },
+    {
+      "feature": "instructor",
+      "importance": 0.251432
+    },
+    {
+      "feature": "crs_ewm_dfw",
+      "importance": 0.153192
+    },
+    {
+      "feature": "pair_last_gpa",
+      "importance": 0.137395
+    },
+    {
+      "feature": "best_guess_dfw",
+      "importance": 0.135035
+    },
+    {
+      "feature": "glob_same_term_last_gpa",
+      "importance": 0.126555
+    },
+    {
+      "feature": "number",
+      "importance": 0.123306
+    },
+    {
+      "feature": "glob_ewm_gpa",
+      "importance": 0.092981
+    },
+    {
+      "feature": "crs_past_avg_size",
+      "importance": 0.086133
+    },
+    {
+      "feature": "crs_past_fail_rate",
+      "importance": 0.082878
+    },
+    {
+      "feature": "n_sections",
+      "importance": 0.07735
+    },
+    {
+      "feature": "sublvl_past_dfw",
+      "importance": 0.074595
+    },
+    {
+      "feature": "crs_past_dfw",
+      "importance": 0.070028
+    },
+    {
+      "feature": "sub_past_w_rate",
+      "importance": 0.068132
+    },
+    {
+      "feature": "glob_recent_gpa",
+      "importance": 0.066753
+    },
+    {
+      "feature": "ins_last_gpa",
+      "importance": 0.064475
+    },
+    {
+      "feature": "pair_shrunk_dev",
+      "importance": 0.06407
+    },
+    {
+      "feature": "ins_past_students",
+      "importance": 0.061089
+    },
+    {
+      "feature": "pair_past_students",
+      "importance": 0.051029
+    },
+    {
+      "feature": "adjusted_guess_gpa",
+      "importance": 0.046388
+    }
+  ],
+  "example": {
+    "course_id": "MBA542",
+    "year_term": "2025-su",
+    "instructor": "Khandelwal, Ashish",
+    "contributions": {
+      "shrunk_guess_dfw": -1.775573,
+      "number": -0.592711,
+      "pair_last_gpa": -0.459995,
+      "sublvl_past_dfw": -0.336172,
+      "crs_ewm_dfw": -0.297854,
+      "term_Summer": 0.295931,
+      "best_guess_dfw": -0.281829,
+      "instructor": -0.264339,
+      "crs_past_avg_size": -0.209098,
+      "sub_past_w_rate": -0.196423
+    }
+  }
+}

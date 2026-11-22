@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semester Planner · CourseWise</title>
+  <meta name="description" content="Build a semester and see your expected GPA and workload.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/planner.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Semester Planner</li></ol></nav>
+        <h1>Semester Planner</h1>
+        <p class="lead">Add the courses you are considering. Each one counts with its predicted average GPA, weighted by credit hours.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container planner">
+        <div class="stack">
+          <div class="panel">
+            <h2 class="panel-title">Where you are now</h2>
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="cgpa">Current CGPA</label>
+                <input class="input num" id="cgpa" type="number" min="0" max="4" step="0.01" placeholder="e.g. 3.20" aria-describedby="cgpa-error">
+                <span class="error" id="cgpa-error" role="alert"></span>
+              </div>
+              <div class="field">
+                <label for="done">Completed credit hours</label>
+                <input class="input num" id="done" type="number" min="0" max="250" step="1" placeholder="e.g. 45" aria-describedby="done-error">
+                <span class="error" id="done-error" role="alert"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head">
+              <h2 class="panel-title">Courses this term</h2>
+              <span class="subtle" id="slots" style="font-size:var(--fs-xs)"></span>
+            </div>
+            <div class="field">
+              <label class="visually-hidden" for="add">Add a course</label>
+              <div class="ac"><input class="input" id="add" type="text" placeholder="Add a course by code or title"></div>
+            </div>
+            <ul class="plan-list" id="plan-list" role="list"></ul>
+
+            <div class="whatif">
+              <div class="spread">
+                <label for="shift"><strong>What if</strong> <span class="subtle">I do better or worse than the average student?</span></label>
+                <output class="num" id="shift-out" for="shift">±0.00</output>
+              </div>
+              <input id="shift" type="range" min="-0.6" max="0.6" step="0.1" value="0">
+              <div class="spread subtle whatif-ends"><span>Worse</span><span>Average</span><span>Better</span></div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="plan-summary">
+          <div class="panel stack">
+            <h2 class="panel-title">Expected outcome</h2>
+            <div class="grid grid-2">
+              <div class="stat"><span class="stat-label">Term GPA</span><span class="stat-value result-big" id="term-gpa">–</span></div>
+              <div class="stat"><span class="stat-label">New CGPA</span><span class="stat-value result-big" id="new-cgpa">–</span><small id="cgpa-delta"></small></div>
+            </div>
+            <div class="stack" style="gap:var(--s2)">
+              <div class="spread"><span class="stat-label subtle">Workload</span><strong id="load-label">–</strong></div>
+              <div class="meter" id="load-meter"><span></span></div>
+              <span class="subtle result-small" id="load-detail"></span>
+            </div>
+            <div class="stack" id="warnings" style="gap:var(--s2)"></div>
+            <div class="chart" id="plan-chart" style="min-height:180px"></div>
+            <div class="row no-print">
+              <button class="btn btn-outline btn-sm" type="button" id="print">Print plan</button>
+              <button class="btn btn-ghost btn-sm" type="button" id="clear">Clear all</button>
+            </div>
+          </div>
+          <p class="subtle result-small">Saved automatically in this browser.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>

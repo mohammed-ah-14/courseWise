@@ -1,0 +1,458 @@
+{
+  "overall_mae": 0.147051,
+  "by_group": {
+    "level": [
+      {
+        "level": 200,
+        "count": 1288,
+        "mae": 0.161178
+      },
+      {
+        "level": 300,
+        "count": 1173,
+        "mae": 0.156902
+      },
+      {
+        "level": 400,
+        "count": 1677,
+        "mae": 0.153203
+      },
+      {
+        "level": 100,
+        "count": 1168,
+        "mae": 0.151366
+      },
+      {
+        "level": 500,
+        "count": 791,
+        "mae": 0.100496
+      },
+      {
+        "level": 600,
+        "count": 105,
+        "mae": 0.082892
+      },
+      {
+        "level": 700,
+        "count": 16,
+        "mae": 0.05048
+      }
+    ],
+    "dept_group": [
+      {
+        "dept_group": "Humanities & Arts",
+        "count": 889,
+        "mae": 0.17187
+      },
+      {
+        "dept_group": "Social Sciences",
+        "count": 728,
+        "mae": 0.171577
+      },
+      {
+        "dept_group": "Sciences",
+        "count": 784,
+        "mae": 0.171464
+      },
+      {
+        "dept_group": "Engineering",
+        "count": 1152,
+        "mae": 0.145958
+      },
+      {
+        "dept_group": "Other",
+        "count": 466,
+        "mae": 0.144129
+      },
+      {
+        "dept_group": "Media",
+        "count": 490,
+        "mae": 0.141425
+      },
+      {
+        "dept_group": "Agriculture & Health",
+        "count": 853,
+        "mae": 0.133388
+      },
+      {
+        "dept_group": "Business",
+        "count": 708,
+        "mae": 0.099083
+      },
+      {
+        "dept_group": "Education",
+        "count": 148,
+        "mae": 0.092554
+      }
+    ],
+    "term": [
+      {
+        "term": "Summer",
+        "count": 328,
+        "mae": 0.200082
+      },
+      {
+        "term": "Spring",
+        "count": 3765,
+        "mae": 0.145284
+      },
+      {
+        "term": "Fall",
+        "count": 2076,
+        "mae": 0.142707
+      },
+      {
+        "term": "Winter",
+        "count": 49,
+        "mae": 0.111883
+      }
+    ],
+    "sched_type": [
+      {
+        "sched_type": "Onl",
+        "count": 11,
+        "mae": 0.199362
+      },
+      {
+        "sched_type": "ST",
+        "count": 32,
+        "mae": 0.182797
+      },
+      {
+        "sched_type": "LBD",
+        "count": 52,
+        "mae": 0.165355
+      },
+      {
+        "sched_type": "OLC",
+        "count": 140,
+        "mae": 0.16076
+      },
+      {
+        "sched_type": "LEC",
+        "count": 1421,
+        "mae": 0.155153
+      },
+      {
+        "sched_type": "DIS",
+        "count": 376,
+        "mae": 0.154108
+      },
+      {
+        "sched_type": "Q",
+        "count": 2,
+        "mae": 0.147134
+      },
+      {
+        "sched_type": "ONL",
+        "count": 1219,
+        "mae": 0.14473
+      },
+      {
+        "sched_type": "OD",
+        "count": 7,
+        "mae": 0.144122
+      },
+      {
+        "sched_type": "LCD",
+        "count": 2776,
+        "mae": 0.143469
+      },
+      {
+        "sched_type": "STA",
+        "count": 1,
+        "mae": 0.137141
+      },
+      {
+        "sched_type": "INT",
+        "count": 10,
+        "mae": 0.135708
+      },
+      {
+        "sched_type": "LAB",
+        "count": 132,
+        "mae": 0.12268
+      },
+      {
+        "sched_type": "PKG",
+        "count": 3,
+        "mae": 0.119648
+      },
+      {
+        "sched_type": "CNF",
+        "count": 3,
+        "mae": 0.119345
+      },
+      {
+        "sched_type": "SEM",
+        "count": 3,
+        "mae": 0.11504
+      },
+      {
+        "sched_type": "Unknown",
+        "count": 1,
+        "mae": 0.076745
+      },
+      {
+        "sched_type": "PR",
+        "count": 25,
+        "mae": 0.073611
+      },
+      {
+        "sched_type": "OLB",
+        "count": 3,
+        "mae": 0.044285
+      },
+      {
+        "sched_type": "TRV",
+        "count": 1,
+        "mae": 0.000596
+      }
+    ],
+    "is_new_course": [
+      {
+        "is_new_course": 1,
+        "count": 226,
+        "mae": 0.182597
+      },
+      {
+        "is_new_course": 0,
+        "count": 5992,
+        "mae": 0.14571
+      }
+    ],
+    "is_new_instructor": [
+      {
+        "is_new_instructor": 1,
+        "count": 619,
+        "mae": 0.172375
+      },
+      {
+        "is_new_instructor": 0,
+        "count": 5599,
+        "mae": 0.144251
+      }
+    ],
+    "is_new_pair": [
+      {
+        "is_new_pair": 1,
+        "count": 1638,
+        "mae": 0.177896
+      },
+      {
+        "is_new_pair": 0,
+        "count": 4580,
+        "mae": 0.13602
+      }
+    ],
+    "class_size": [
+      {
+        "class_size": "(0.0, 30.0]",
+        "count": 1894,
+        "mae": 0.163921
+      },
+      {
+        "class_size": "(30.0, 50.0]",
+        "count": 1517,
+        "mae": 0.157147
+      },
+      {
+        "class_size": "(50.0, 100.0]",
+        "count": 1473,
+        "mae": 0.140236
+      },
+      {
+        "class_size": "(100.0, 200.0]",
+        "count": 742,
+        "mae": 0.126146
+      },
+      {
+        "class_size": "(200.0, inf]",
+        "count": 592,
+        "mae": 0.110368
+      }
+    ]
+  },
+  "worst_predictions": [
+    {
+      "year_term": "2026-su",
+      "course_id": "STAT385",
+      "title": "Statistics Programming Methods",
+      "instructor": "Kinson, Christopher",
+      "actual": 2.060909,
+      "predicted": 3.709225,
+      "abs_error": 1.648316
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "LER100",
+      "title": "Introduction to Labor Studies",
+      "instructor": "Ashby, Steven",
+      "actual": 3.444444,
+      "predicted": 2.116681,
+      "abs_error": 1.327763
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "MUS209",
+      "title": "Acoustics for Musicians",
+      "instructor": "Fieldsteel, Eli",
+      "actual": 2.564783,
+      "predicted": 3.864351,
+      "abs_error": 1.299568
+    },
+    {
+      "year_term": "2026-sp",
+      "course_id": "MATH444",
+      "title": "Elementary Real Analysis",
+      "instructor": "Shaw, Eve",
+      "actual": 2.238095,
+      "predicted": 3.413603,
+      "abs_error": 1.175508
+    },
+    {
+      "year_term": "2026-sp",
+      "course_id": "LEAD321",
+      "title": "Training and Development",
+      "instructor": "Leman, Amy",
+      "actual": 2.549706,
+      "predicted": 3.665686,
+      "abs_error": 1.115981
+    },
+    {
+      "year_term": "2025-su",
+      "course_id": "CMN336",
+      "title": "Communicating in Families",
+      "instructor": "Yan, Jia",
+      "actual": 2.576364,
+      "predicted": 3.673664,
+      "abs_error": 1.097301
+    },
+    {
+      "year_term": "2025-fa",
+      "course_id": "MATH482",
+      "title": "Linear Programming",
+      "instructor": "Wigal, Michael",
+      "actual": 2.159565,
+      "predicted": 3.20039,
+      "abs_error": 1.040825
+    },
+    {
+      "year_term": "2026-sp",
+      "course_id": "ADV284",
+      "title": "Consumer Insight",
+      "instructor": "Chick, Cherie",
+      "actual": 2.746207,
+      "predicted": 3.777298,
+      "abs_error": 1.031091
+    },
+    {
+      "year_term": "2025-fa",
+      "course_id": "MUS201",
+      "title": "Music Theory and Practice III",
+      "instructor": "Siegle, George",
+      "actual": 2.445238,
+      "predicted": 3.461623,
+      "abs_error": 1.016385
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "GSD103",
+      "title": "The Basics of Game Design",
+      "instructor": "Butt, Emilie",
+      "actual": 2.333333,
+      "predicted": 3.334336,
+      "abs_error": 1.001002
+    },
+    {
+      "year_term": "2025-fa",
+      "course_id": "MUS201",
+      "title": "Music Theory and Practice III",
+      "instructor": "Miller, Maxwell",
+      "actual": 2.492857,
+      "predicted": 3.461623,
+      "abs_error": 0.968766
+    },
+    {
+      "year_term": "2026-sp",
+      "course_id": "ATMS140",
+      "title": "Climate and Global Change",
+      "instructor": "Hence, Deanna",
+      "actual": 2.677903,
+      "predicted": 3.616543,
+      "abs_error": 0.93864
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "ASRM409",
+      "title": "Stoch Proc for Fin & Insurance",
+      "instructor": "Caithamer, Peter",
+      "actual": 2.224865,
+      "predicted": 3.154672,
+      "abs_error": 0.929807
+    },
+    {
+      "year_term": "2025-su",
+      "course_id": "HIST100",
+      "title": "Global History",
+      "instructor": "Mandala, Ruth",
+      "actual": 2.833214,
+      "predicted": 3.755022,
+      "abs_error": 0.921807
+    },
+    {
+      "year_term": "2026-sp",
+      "course_id": "CLCV224",
+      "title": "Greco-RomanAntiquityUSMinority",
+      "instructor": "Shively, Rebekah",
+      "actual": 2.794762,
+      "predicted": 3.698762,
+      "abs_error": 0.904
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "HK470",
+      "title": "Orientation to Internship",
+      "instructor": "Clarke, Caitlin",
+      "actual": 2.916667,
+      "predicted": 3.816443,
+      "abs_error": 0.899776
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "PS101",
+      "title": "Intro to US Gov & Pol",
+      "instructor": "Ahn, Seongjoon",
+      "actual": 2.996235,
+      "predicted": 3.878798,
+      "abs_error": 0.882563
+    },
+    {
+      "year_term": "2026-sp",
+      "course_id": "ASRM441",
+      "title": "Statistics for Risk Modeling I",
+      "instructor": "Icaza, Eric",
+      "actual": 2.54069,
+      "predicted": 3.411073,
+      "abs_error": 0.870383
+    },
+    {
+      "year_term": "2025-sp",
+      "course_id": "MCB150",
+      "title": "Molec & Cellular Basis of Life",
+      "instructor": "Mehrtens, Bradley",
+      "actual": 3.832917,
+      "predicted": 2.96704,
+      "abs_error": 0.865876
+    },
+    {
+      "year_term": "2025-fa",
+      "course_id": "PSYC214",
+      "title": "Psychology of Racism in the US",
+      "instructor": "Seaton, Eleanor",
+      "actual": 2.6875,
+      "predicted": 3.538908,
+      "abs_error": 0.851408
+    }
+  ]
+}

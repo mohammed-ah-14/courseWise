@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Difficulty Predictor · CourseWise</title>
+  <meta name="description" content="Predicted average GPA, DFW rate and difficulty for a course, term and instructor.">
+  <script src="../js/theme-init.js"></script>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script type="module" src="../js/main.js"></script>
+  <script type="module" src="../js/predict.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header id="site-header"></header>
+
+  <main id="main">
+    <section class="page-head">
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb"><ol><li><a href="../index.html">Home</a></li><li aria-current="page">Difficulty Predictor</li></ol></nav>
+        <h1>Difficulty Predictor</h1>
+        <p class="lead">Choose a course, a term and, if you know it, the instructor. The model estimates how that offering will go on average.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container predictor">
+        <form class="panel predict-form" id="predict-form" novalidate>
+          <div class="stack predict-head">
+            <h2 class="panel-title">Your course</h2>
+            <p class="hint live-status" id="p-live">Checking for the live model…</p>
+          </div>
+
+          <div class="field">
+            <label for="p-course">Course</label>
+            <div class="ac"><input class="input" id="p-course" type="text" placeholder="Code or title, e.g. CS 225" aria-describedby="p-course-hint p-course-error"></div>
+            <span class="hint" id="p-course-hint">Only courses with a prediction for 2025–2026 are listed.</span>
+            <span class="error" id="p-course-error" role="alert"></span>
+          </div>
+
+          <div class="field">
+            <label for="p-term">Term</label>
+            <select class="select" id="p-term" disabled aria-describedby="p-term-error"><option value="">Choose a course first</option></select>
+            <span class="error" id="p-term-error" role="alert"></span>
+          </div>
+
+          <div class="field">
+            <label for="p-instructor">Instructor <span class="subtle">(optional)</span></label>
+            <select class="select" id="p-instructor" disabled aria-describedby="p-instructor-hint"><option value="">Any instructor</option></select>
+            <span class="hint" id="p-instructor-hint">“Any instructor” averages all sections of that term by class size.</span>
+          </div>
+
+          <div class="field" id="p-format-field" hidden>
+            <label for="p-format">Format</label>
+            <select class="select" id="p-format">
+              <option value="">Usual format</option>
+              <option value="in-person">In person</option>
+              <option value="online">Online</option>
+            </select>
+          </div>
+
+          <button class="btn btn-primary predict-submit" type="submit">Predict</button>
+        </form>
+
+        <div class="predict-result" id="result" aria-live="polite">
+          <div class="panel result-empty">
+            <div class="scale-demo" aria-hidden="true">
+              <div class="scale"><div class="scale-track"></div><div class="scale-marker is-ghost" style="left:72%"><span>?</span></div>
+                <div class="scale-ticks"><span style="left:0%">0.0</span><span style="left:25%">1.0</span><span style="left:50%">2.0</span><span style="left:75%">3.0</span><span style="left:100%">4.0</span></div></div>
+            </div>
+            <p>Pick a course to see where its next offering is likely to land.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer"></footer>
+</body>
+</html>
