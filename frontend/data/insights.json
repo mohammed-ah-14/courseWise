@@ -1,0 +1,604 @@
+{
+  "recentYears": [
+    2022,
+    2026
+  ],
+  "byYear": [
+    {
+      "key": 2005,
+      "gpa": 3.175,
+      "dfw": 5.88,
+      "students": 135399
+    },
+    {
+      "key": 2006,
+      "gpa": 3.188,
+      "dfw": 5.83,
+      "students": 259735
+    },
+    {
+      "key": 2007,
+      "gpa": 3.196,
+      "dfw": 5.73,
+      "students": 259269
+    },
+    {
+      "key": 2008,
+      "gpa": 3.21,
+      "dfw": 5.73,
+      "students": 259649
+    },
+    {
+      "key": 2009,
+      "gpa": 3.222,
+      "dfw": 5.43,
+      "students": 264755
+    },
+    {
+      "key": 2010,
+      "gpa": 3.233,
+      "dfw": 5.45,
+      "students": 272424
+    },
+    {
+      "key": 2011,
+      "gpa": 3.227,
+      "dfw": 5.57,
+      "students": 277774
+    },
+    {
+      "key": 2012,
+      "gpa": 3.229,
+      "dfw": 5.61,
+      "students": 274847
+    },
+    {
+      "key": 2013,
+      "gpa": 3.251,
+      "dfw": 5.47,
+      "students": 277518
+    },
+    {
+      "key": 2014,
+      "gpa": 3.24,
+      "dfw": 5.98,
+      "students": 278028
+    },
+    {
+      "key": 2015,
+      "gpa": 3.266,
+      "dfw": 5.74,
+      "students": 296523
+    },
+    {
+      "key": 2016,
+      "gpa": 3.276,
+      "dfw": 5.81,
+      "students": 285829
+    },
+    {
+      "key": 2017,
+      "gpa": 3.302,
+      "dfw": 5.81,
+      "students": 298151
+    },
+    {
+      "key": 2018,
+      "gpa": 3.338,
+      "dfw": 5.57,
+      "students": 307244
+    },
+    {
+      "key": 2019,
+      "gpa": 3.339,
+      "dfw": 5.61,
+      "students": 320490
+    },
+    {
+      "key": 2020,
+      "gpa": 3.487,
+      "dfw": 3.7,
+      "students": 314364
+    },
+    {
+      "key": 2021,
+      "gpa": 3.429,
+      "dfw": 5.57,
+      "students": 360148
+    },
+    {
+      "key": 2022,
+      "gpa": 3.447,
+      "dfw": 5.03,
+      "students": 358113
+    },
+    {
+      "key": 2023,
+      "gpa": 3.508,
+      "dfw": 4.01,
+      "students": 342949
+    },
+    {
+      "key": 2024,
+      "gpa": 3.528,
+      "dfw": 3.78,
+      "students": 373987
+    },
+    {
+      "key": 2025,
+      "gpa": 3.548,
+      "dfw": 3.56,
+      "students": 390726
+    },
+    {
+      "key": 2026,
+      "gpa": 3.572,
+      "dfw": 3.3,
+      "students": 192804
+    }
+  ],
+  "byLevel": [
+    {
+      "key": 100,
+      "gpa": 3.489,
+      "dfw": 4.9,
+      "students": 434094
+    },
+    {
+      "key": 200,
+      "gpa": 3.438,
+      "dfw": 5.14,
+      "students": 450288
+    },
+    {
+      "key": 300,
+      "gpa": 3.478,
+      "dfw": 3.98,
+      "students": 237637
+    },
+    {
+      "key": 400,
+      "gpa": 3.547,
+      "dfw": 3.18,
+      "students": 276752
+    },
+    {
+      "key": 500,
+      "gpa": 3.699,
+      "dfw": 1.35,
+      "students": 259808
+    }
+  ],
+  "byTerm": [
+    {
+      "key": "Fall",
+      "gpa": 3.517,
+      "dfw": 3.96,
+      "students": 757304
+    },
+    {
+      "key": "Spring",
+      "gpa": 3.507,
+      "dfw": 4.04,
+      "students": 834712
+    },
+    {
+      "key": "Summer",
+      "gpa": 3.611,
+      "dfw": 3.76,
+      "students": 57876
+    },
+    {
+      "key": "Winter",
+      "gpa": 3.662,
+      "dfw": 3.43,
+      "students": 8687
+    }
+  ],
+  "byGroup": [
+    {
+      "key": "Sciences",
+      "gpa": 3.27,
+      "dfw": 6.59,
+      "students": 333431
+    },
+    {
+      "key": "Social Sciences",
+      "gpa": 3.469,
+      "dfw": 4.83,
+      "students": 171429
+    },
+    {
+      "key": "Engineering",
+      "gpa": 3.479,
+      "dfw": 4.02,
+      "students": 311296
+    },
+    {
+      "key": "Other",
+      "gpa": 3.533,
+      "dfw": 3.07,
+      "students": 86977
+    },
+    {
+      "key": "Humanities & Arts",
+      "gpa": 3.536,
+      "dfw": 4.37,
+      "students": 127050
+    },
+    {
+      "key": "Agriculture & Health",
+      "gpa": 3.6,
+      "dfw": 3.53,
+      "students": 240348
+    },
+    {
+      "key": "Media",
+      "gpa": 3.663,
+      "dfw": 2.8,
+      "students": 67247
+    },
+    {
+      "key": "Business",
+      "gpa": 3.72,
+      "dfw": 1.48,
+      "students": 294079
+    },
+    {
+      "key": "Education",
+      "gpa": 3.798,
+      "dfw": 1.8,
+      "students": 26722
+    }
+  ],
+  "hardestSubjects": [
+    {
+      "key": "VM",
+      "gpa": 2.896,
+      "dfw": 3.93,
+      "students": 7601
+    },
+    {
+      "key": "MATH",
+      "gpa": 3.146,
+      "dfw": 8.73,
+      "students": 77628
+    },
+    {
+      "key": "CHBE",
+      "gpa": 3.175,
+      "dfw": 4.34,
+      "students": 6528
+    },
+    {
+      "key": "CHEM",
+      "gpa": 3.189,
+      "dfw": 7.55,
+      "students": 78767
+    },
+    {
+      "key": "TAM",
+      "gpa": 3.197,
+      "dfw": 5.93,
+      "students": 13586
+    },
+    {
+      "key": "GEOL",
+      "gpa": 3.216,
+      "dfw": 9.24,
+      "students": 5216
+    },
+    {
+      "key": "PHYS",
+      "gpa": 3.229,
+      "dfw": 6.72,
+      "students": 40957
+    },
+    {
+      "key": "ASTR",
+      "gpa": 3.238,
+      "dfw": 9.02,
+      "students": 10445
+    },
+    {
+      "key": "ECE",
+      "gpa": 3.264,
+      "dfw": 6.03,
+      "students": 55752
+    },
+    {
+      "key": "PHIL",
+      "gpa": 3.274,
+      "dfw": 9.01,
+      "students": 5960
+    }
+  ],
+  "easiestSubjects": [
+    {
+      "key": "MUSC",
+      "gpa": 3.928,
+      "dfw": 0.83,
+      "students": 4843
+    },
+    {
+      "key": "BUS",
+      "gpa": 3.914,
+      "dfw": 0.6,
+      "students": 10423
+    },
+    {
+      "key": "CI",
+      "gpa": 3.865,
+      "dfw": 0.63,
+      "students": 5743
+    },
+    {
+      "key": "MBA",
+      "gpa": 3.829,
+      "dfw": 1.24,
+      "students": 34882
+    },
+    {
+      "key": "SPED",
+      "gpa": 3.828,
+      "dfw": 1.12,
+      "students": 7044
+    },
+    {
+      "key": "EPOL",
+      "gpa": 3.802,
+      "dfw": 2.32,
+      "students": 5082
+    },
+    {
+      "key": "ENG",
+      "gpa": 3.799,
+      "dfw": 2.11,
+      "students": 8780
+    },
+    {
+      "key": "LAS",
+      "gpa": 3.796,
+      "dfw": 2.22,
+      "students": 12910
+    },
+    {
+      "key": "ABE",
+      "gpa": 3.782,
+      "dfw": 2.21,
+      "students": 3026
+    },
+    {
+      "key": "BADM",
+      "gpa": 3.773,
+      "dfw": 1.29,
+      "students": 118856
+    }
+  ],
+  "dfwHistogram": [
+    {
+      "from": 0,
+      "to": 5,
+      "courses": 3330
+    },
+    {
+      "from": 5,
+      "to": 10,
+      "courses": 731
+    },
+    {
+      "from": 10,
+      "to": 15,
+      "courses": 196
+    },
+    {
+      "from": 15,
+      "to": 20,
+      "courses": 48
+    },
+    {
+      "from": 20,
+      "to": 25,
+      "courses": 19
+    },
+    {
+      "from": 25,
+      "to": 30,
+      "courses": 7
+    },
+    {
+      "from": 30,
+      "to": 35,
+      "courses": 4
+    },
+    {
+      "from": 35,
+      "to": 40,
+      "courses": 1
+    }
+  ],
+  "hardestCourses": [
+    {
+      "id": "CHEM202",
+      "code": "CHEM 202",
+      "title": "Accelerated Chemistry I",
+      "avgGpa": 2.544,
+      "dfw": 19.95,
+      "students": 812,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "VM610",
+      "code": "VM 610",
+      "title": "Medicine and Surgery II",
+      "avgGpa": 2.544,
+      "dfw": 6.06,
+      "students": 660,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "VM653",
+      "code": "VM 653",
+      "title": "SA Medicine and Surgery II",
+      "avgGpa": 2.586,
+      "dfw": 9.93,
+      "students": 695,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "VM652",
+      "code": "VM 652",
+      "title": "LA Medicine and Surgery I",
+      "avgGpa": 2.589,
+      "dfw": 6.86,
+      "students": 700,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "ANSC222",
+      "code": "ANSC 222",
+      "title": "Anatomy and Physiology",
+      "avgGpa": 2.59,
+      "dfw": 18.54,
+      "students": 890,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "MATH115",
+      "code": "MATH 115",
+      "title": "Preparation for Calculus",
+      "avgGpa": 2.625,
+      "dfw": 18.72,
+      "students": 2757,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "VM609",
+      "code": "VM 609",
+      "title": "Medicine and Surgery I",
+      "avgGpa": 2.642,
+      "dfw": 2.26,
+      "students": 665,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "VM611",
+      "code": "VM 611",
+      "title": "Medicine and Surgery III",
+      "avgGpa": 2.643,
+      "dfw": 2.86,
+      "students": 664,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "MATH220",
+      "code": "MATH 220",
+      "title": "Calculus",
+      "avgGpa": 2.644,
+      "dfw": 21.15,
+      "students": 6085,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "CMN321",
+      "code": "CMN 321",
+      "title": "Strategies of Persuasion",
+      "avgGpa": 2.65,
+      "dfw": 13.62,
+      "students": 580,
+      "difficulty": "Hard"
+    }
+  ],
+  "highestDfw": [
+    {
+      "id": "MATH220",
+      "code": "MATH 220",
+      "title": "Calculus",
+      "avgGpa": 2.644,
+      "dfw": 21.15,
+      "students": 6085,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "GEOL111",
+      "code": "GEOL 111",
+      "title": "Emergence of Life",
+      "avgGpa": 2.818,
+      "dfw": 20.22,
+      "students": 826,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "CHEM202",
+      "code": "CHEM 202",
+      "title": "Accelerated Chemistry I",
+      "avgGpa": 2.544,
+      "dfw": 19.95,
+      "students": 812,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "CPSC213",
+      "code": "CPSC 213",
+      "title": "Evolution in Action",
+      "avgGpa": 2.844,
+      "dfw": 19.4,
+      "students": 567,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "MATH115",
+      "code": "MATH 115",
+      "title": "Preparation for Calculus",
+      "avgGpa": 2.625,
+      "dfw": 18.72,
+      "students": 2757,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "ANSC222",
+      "code": "ANSC 222",
+      "title": "Anatomy and Physiology",
+      "avgGpa": 2.59,
+      "dfw": 18.54,
+      "students": 890,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "ECON302",
+      "code": "ECON 302",
+      "title": "Inter Microeconomic Theory",
+      "avgGpa": 2.855,
+      "dfw": 17.19,
+      "students": 3292,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "NRES103",
+      "code": "NRES 103",
+      "title": "The Great Lakes at Risk",
+      "avgGpa": 2.998,
+      "dfw": 15.4,
+      "students": 526,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "GS102",
+      "code": "GS 102",
+      "title": "Prep for 21st Cent Challenges",
+      "avgGpa": 3.03,
+      "dfw": 15.0,
+      "students": 540,
+      "difficulty": "Hard"
+    },
+    {
+      "id": "PSYC235",
+      "code": "PSYC 235",
+      "title": "Intro to Statistics",
+      "avgGpa": 2.986,
+      "dfw": 14.97,
+      "students": 521,
+      "difficulty": "Hard"
+    }
+  ]
+}
