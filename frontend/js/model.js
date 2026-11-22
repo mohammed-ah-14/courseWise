@@ -1,3 +1,4 @@
+// Model page: explain how the ML model work, and show its results and data facts.
 import { getModel, getMeta } from "./data.js";
 import { barChart, hbarList, PALETTE } from "./charts.js";
 import { escapeHTML, fmt, initTabs, errorState } from "./main.js";
@@ -76,11 +77,22 @@ function confusionMatrix(task, info) {
   </div>`;
 }
 
+// Binary tasks: show what is change in the test years after we tune the threshold on validation.
+function thresholdNote(info) {
+  const before = info.testDefaultThreshold;
+  if (info.threshold == null || !before) return "";
+  const recall = (m) => m.confusion_matrix[1][1] / (m.confusion_matrix[1][0] + m.confusion_matrix[1][1]);
+  return `<p class="muted">The decision threshold was tuned on the validation years to ${info.threshold.toFixed(2)} instead of 0.50.
+    On the test years it now finds ${pct(recall(info.test))} of high-risk offerings (was ${pct(recall(before))}); F1 for “Yes” went from
+    ${before.f1_per_class.Yes.toFixed(2)} to ${info.test.f1_per_class.Yes.toFixed(2)}.</p>`;
+}
+
 function taskPanel(task, info) {
   const kind = TASKS[task].kind;
   const metricLabel = METRICS[kind][0][1];
   return `<div class="stack task-panel" id="panel-${task}" role="tabpanel" hidden style="gap:var(--s5)">
     <p class="muted">${TASKS[task].about}</p>
+    ${thresholdNote(info)}
     ${headline(task, info)}
     <div class="grid ${kind === "classes" ? "grid-2" : ""}">
       <div class="panel">
@@ -122,7 +134,7 @@ function renderTasks(tasks) {
   const drawn = new Set();
   initTabs($("task-tabs"), (panelId) => {
     const task = panelId.replace("panel-", "");
-    // Charts measure their container, so draw a task only once its panel is visible.
+    // Charts need to measure their container, so we draw one task only when its panel is visible.
     if (!drawn.has(task)) { drawn.add(task); drawTaskCharts(task, tasks[task]); }
   });
 }

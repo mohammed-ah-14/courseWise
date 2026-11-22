@@ -1,3 +1,4 @@
+// Contact page: form with checking, rating and message length limit.
 import { ICONS, escapeHTML } from "./main.js";
 
 const $ = (id) => document.getElementById(id);
@@ -44,7 +45,7 @@ function init() {
   $("message").addEventListener("input", (e) => {
     $("counter").textContent = `${e.target.value.length} / ${MAX_MESSAGE}`;
   });
-  // Validate a field when the user leaves it, then live once it has shown an error.
+  // Check the field when user leave it. After it show an error, check again while user is typing.
   Object.keys(RULES).forEach((id) => {
     $(id).addEventListener("blur", () => $(id).value && check(id));
     $(id).addEventListener("input", () => $(id).getAttribute("aria-invalid") === "true" && check(id));

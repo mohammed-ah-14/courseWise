@@ -1,4 +1,4 @@
-// Small dependency-free SVG charts. Colours use CSS variables, so dark mode just works.
+// Small SVG charts, no library need. Colors use CSS variables, so dark mode work automatically.
 import { escapeHTML, debounce } from "./main.js";
 
 const M = { top: 20, right: 12, bottom: 30, left: 44 };
@@ -9,7 +9,7 @@ function niceTicks(min, max, count = 5) {
   const raw = span / count;
   const mag = 10 ** Math.floor(Math.log10(raw));
   const step = [1, 2, 2.5, 5, 10].map((m) => m * mag).find((s) => span / s <= count) || raw;
-  // Ticks always enclose [min, max] so no data point falls outside the axis.
+  // Ticks always cover [min, max], so no data point go outside of the axis.
   const ticks = [];
   const last = Math.ceil(max / step - 1e-9) * step;
   for (let v = Math.floor(min / step + 1e-9) * step; v <= last + step * 1e-6; v += step) ticks.push(+v.toFixed(6));
@@ -18,7 +18,7 @@ function niceTicks(min, max, count = 5) {
 
 const scale = (d0, d1, r0, r1) => (v) => r0 + ((v - d0) / (d1 - d0 || 1)) * (r1 - r0);
 
-// Render on mount and whenever the container width changes. draw(width) returns SVG markup.
+// Draw the chart when it mount and again when container width change. draw(width) give back the SVG text.
 export function mount(el, draw) {
   let lastWidth = 0;
   const render = () => {
@@ -36,7 +36,7 @@ export function mount(el, draw) {
   el._render();
 }
 
-// Any element inside the chart with data-tip="<html>" shows a tooltip on hover.
+// Any element inside the chart that have data-tip="<html>" will show a tooltip when mouse hover on it.
 function attachTooltip(el) {
   const tip = document.createElement("div");
   tip.className = "chart-tip";
@@ -104,7 +104,7 @@ export function barChart(el, { labels, series, height = 260, format = String, yM
 /* Line chart -------------------------------------------------------------- */
 /**
  * labels: x labels; series: [{ name, values, color, dashed }]
- * opts: height, format, yMin, yMax, band: { from, to, label } (shaded x range by label value)
+ * opts: height, format, yMin, yMax, band: { from, to, label } (shade the x range using the label value)
  */
 export function lineChart(el, { labels, series, height = 260, format = String, yMin, yMax, band, label = "Line chart" }) {
   mount(el, (width) => {
@@ -114,7 +114,7 @@ export function lineChart(el, { labels, series, height = 260, format = String, y
     const pad = (hi - lo) * 0.12 || 0.1;
     const ticks = niceTicks(yMin ?? lo - pad, yMax ?? hi + pad, 4);
     const y = scale(ticks[0], ticks.at(-1), height - M.bottom, M.top);
-    const inset = 14; // keeps the first point and x label clear of the y-axis labels
+    const inset = 14; // some space, so first point and x label not touch the y-axis labels
     const step = (width - M.left - M.right - inset * 2) / Math.max(1, labels.length - 1);
     const x = (i) => M.left + inset + step * i;
     const every = Math.ceil(labels.length / Math.max(1, Math.floor((width - M.left) / 48)));
@@ -162,7 +162,7 @@ export function hbarList(el, { items, domain, format = String }) {
   }).join("")}</ol>`;
 }
 
-// UoS brand colours for charts (tokens in base.css).
+// UoS brand colors for the charts (the tokens are in base.css).
 export const PALETTE = {
   ink: "var(--navy)",
   brand: "var(--brand)",

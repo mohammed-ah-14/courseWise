@@ -1,5 +1,5 @@
 /* ==========================================================================
-   CourseWise — page-specific styles
+   CourseWise — styles for each page
    ========================================================================== */
 
 /* ==== Home =============================================================== */
@@ -189,6 +189,11 @@ td.is-off { color: var(--hard); font-weight: 600; }
 .predictor { display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr); gap: var(--s6); align-items: start; }
 .predict-form { display: grid; gap: var(--s5); position: sticky; top: calc(var(--header-h) + var(--s4)); }
 .predict-form .panel-title { margin-bottom: 0; }
+.predict-head { gap: var(--s2); }
+.live-status { line-height: 1.5; }
+.live-status code { font-size: 0.95em; color: var(--ink-2); }
+.live-dot { display: inline-block; width: 7px; height: 7px; margin-right: 7px; border-radius: 50%; background: var(--line-strong); vertical-align: 1px; }
+.live-dot.is-on { background: var(--brand); box-shadow: 0 0 0 3px var(--brand-wash); }
 .predict-submit { width: 100%; }
 .result-empty { display: grid; gap: var(--s4); justify-items: center; text-align: center; padding-block: var(--s8); }
 .scale-demo { width: min(100%, 420px); opacity: 0.7; }

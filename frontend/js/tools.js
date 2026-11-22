@@ -1,3 +1,4 @@
+// Study tools page: focus timer, deadlines and to-do list.
 import { ICONS, escapeHTML, initTabs, store, toast } from "./main.js";
 
 const $ = (id) => document.getElementById(id);
@@ -29,7 +30,7 @@ function beep() {
       osc.start(ctx.currentTime + t);
       osc.stop(ctx.currentTime + t + 0.2);
     });
-  } catch { /* audio not available */ }
+  } catch { /* no audio, so we skip */ }
 }
 
 function drawTimer() {
@@ -70,7 +71,7 @@ function finish() {
 }
 
 function start() {
-  // Count from a fixed end time so the timer stays right in background tabs.
+  // Count from one fixed end time, so the timer still correct when the tab is in background.
   timer.endsAt = Date.now() + timer.left * 1000;
   timer.tick = setInterval(() => {
     timer.left = Math.max(0, Math.round((timer.endsAt - Date.now()) / 1000));

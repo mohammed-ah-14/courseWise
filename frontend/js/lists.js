@@ -1,4 +1,4 @@
-// Saved course lists shared between pages (planner, compare), kept in localStorage.
+// Saved course lists that planner and compare page share. We keep them in localStorage.
 import { store, toast } from "./main.js";
 
 const KEYS = { planner: "cw-planner", compare: "cw-compare" };

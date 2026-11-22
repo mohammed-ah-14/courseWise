@@ -1,3 +1,4 @@
+// Compare page: user choose up to 3 courses and see them side by side.
 import { getCourses, getCourseDetail } from "./data.js";
 import { attachAutocomplete } from "./autocomplete.js";
 import { barChart, lineChart, SERIES_COLORS } from "./charts.js";
@@ -12,7 +13,7 @@ const DIFFICULTY_RANK = { Easy: 2, Medium: 1, Hard: 0 };
 
 let courses = new Map();
 
-/* Rows of the comparison table: [label, value(c), better: "high" | "low" | null, format] */
+/* Rows for the compare table: [label, value(c), which one is better: "high" | "low" | null, format] */
 const ROWS = [
   ["Difficulty", (c) => c.difficulty, null, difficultyBadge],
   ["Average GPA (5 yrs)", (c) => c.avgGpa, "high", fmt.gpa],
@@ -77,7 +78,7 @@ function renderVerdict(list) {
       ? `<div class="note">${ICONS.info}<span>Add one more course to compare.</span></div>` : "";
     return;
   }
-  // Score: difficulty label first, then GPA, then lower DFW.
+  // Score for the courses: first we look the difficulty label, then GPA, then the lower DFW win.
   const score = (c) => DIFFICULTY_RANK[c.difficulty] * 10 + (c.predGpa ?? c.avgGpa) - c.dfw / 100;
   const ranked = [...list].sort((a, b) => score(b) - score(a));
   const [easy, next] = ranked;

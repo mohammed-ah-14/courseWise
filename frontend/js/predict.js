@@ -1,16 +1,26 @@
-import { getCourses, getCourseDetail } from "./data.js";
+// Predictor page: guess the difficulty of one course for a term (live model or old test term).
+import { getCourses, getCourseDetail, getLiveModel, getForecastOptions, getForecast } from "./data.js";
 import { attachAutocomplete } from "./autocomplete.js";
 import { addToList } from "./lists.js";
 import { ICONS, escapeHTML, fmt, difficultyBadge, scaleHTML, courseUrl, errorState } from "./main.js";
 
 const $ = (id) => document.getElementById(id);
 const DIFFICULTY = ["Hard", "Medium", "Easy"];
-const DFW_METER_MAX = 30; // % at which the DFW meter is full
+const DFW_METER_MAX = 30; // % when the DFW meter become full
+// Term option values: "live:2026-fa" = forecast from the running model, "test:2025-fa" = old test term that the model never see in training.
+const LIVE = "live";
+const TEST = "test";
+const FORMAT_LABELS = { "in-person": "in person", online: "online" };
 
 let courses = [];
-let selected = null; // { course, detail }
+let live = null; // health info from the live model, or null if it is not running
+let selected = null; // { course, detail, options }
+let request = 0; // id of the newest forecast request; we ignore the older answers
 
-/* Averaging over instructors (class-size weighted) ------------------------ */
+const termKind = () => $("p-term").value.split(":")[0];
+const termKey = () => $("p-term").value.split(":")[1];
+
+/* Average the test predictions for all instructors (use class size as weight) --- */
 function weighted(rows, key) {
   const total = rows.reduce((s, r) => s + r.students, 0);
   return rows.reduce((s, r) => s + r[key] * r.students, 0) / total;
@@ -39,22 +49,57 @@ function setError(id, message) {
   $(id).setAttribute("aria-invalid", Boolean(message));
 }
 
-function fillTerms(predictions) {
-  const terms = [...new Map(predictions.map((p) => [p.termKey, p.term])).entries()];
+function renderLiveStatus() {
+  $("p-live").innerHTML = live
+    ? `<span class="live-dot is-on" aria-hidden="true"></span>Live model · trained on grades up to ${escapeHTML(live.dataUntil)}`
+    : `<span class="live-dot" aria-hidden="true"></span>Live model offline · showing held-out 2025–2026 predictions. Run <code>python3 -m coursewise serve</code> for upcoming terms.`;
+  $("p-course-hint").textContent = live
+    ? "Any course offered since 2016."
+    : "Only courses with a prediction for 2025–2026 are listed.";
+}
+
+const option = (value, label) => `<option value="${escapeHTML(value)}">${escapeHTML(label)}</option>`;
+
+function fillTerms() {
+  const upcoming = selected.options?.terms ?? [];
+  const past = [...new Map(selected.detail.predictions.map((p) => [p.termKey, p.term])).entries()];
   const term = $("p-term");
-  term.innerHTML = terms.map(([key, label]) => `<option value="${key}">${escapeHTML(label)}</option>`).join("");
-  term.value = terms.at(-1)[0];
+  if (!upcoming.length && !past.length) {
+    term.innerHTML = "<option value=''>No prediction for this course</option>";
+    setError("p-term", "The model has no prediction for this course yet.");
+    return;
+  }
+  const group = (label, items) => (items.length ? `<optgroup label="${label}">${items.join("")}</optgroup>` : "");
+  term.innerHTML =
+    group("Upcoming · live forecast", upcoming.map((t) => option(`${LIVE}:${t.key}`, t.label))) +
+    group("Held out · compare with what happened", past.map(([key, label]) => option(`${TEST}:${key}`, label)));
+  term.value = upcoming.length ? `${LIVE}:${upcoming[0].key}` : `${TEST}:${past.at(-1)[0]}`;
   term.disabled = false;
-  fillInstructors();
+  setError("p-term", "");
+  onTermChange();
 }
 
 function fillInstructors() {
-  const rows = selected.detail.predictions.filter((p) => p.termKey === $("p-term").value);
+  const isLive = termKind() === LIVE;
+  const names = isLive
+    ? selected.options.instructors.map((i) => i.name)
+    : selected.detail.predictions.filter((p) => p.termKey === termKey()).map((p) => p.instructor);
   const select = $("p-instructor");
-  select.innerHTML = `<option value="">Any instructor</option>${rows
-    .map((p) => `<option value="${escapeHTML(p.instructor)}">${escapeHTML(p.instructor)}</option>`).join("")}`;
-  select.disabled = rows.length < 2;
-  if (rows.length === 1) select.value = rows[0].instructor;
+  const previous = select.value;
+  select.innerHTML = option("", "Any instructor") + names.map((n) => option(n, n)).join("");
+  select.disabled = names.length < 2;
+  if (names.length === 1) select.value = names[0];
+  else if (names.includes(previous)) select.value = previous;
+  $("p-instructor-hint").textContent = isLive
+    ? "“Any instructor” averages the instructors of the course’s last two years, weighted by students."
+    : "“Any instructor” averages all sections of that term by class size.";
+}
+
+function onTermChange() {
+  const isLive = termKind() === LIVE;
+  $("p-format-field").hidden = !isLive;
+  if (isLive) $("p-format").options[0].textContent = `Usual format (${FORMAT_LABELS[selected.options.usualFormat]})`;
+  fillInstructors();
 }
 
 async function selectCourse(course) {
@@ -63,8 +108,12 @@ async function selectCourse(course) {
   $("p-term").disabled = true;
   $("p-term").innerHTML = "<option>Loading terms…</option>";
   try {
-    selected = { course, detail: await getCourseDetail(course) };
-    fillTerms(selected.detail.predictions);
+    const [detail, options] = await Promise.all([
+      getCourseDetail(course),
+      live ? getForecastOptions(course.id).catch(() => null) : null,
+    ]);
+    selected = { course, detail, options };
+    fillTerms();
   } catch (err) {
     console.error(err);
     $("result").innerHTML = errorState();
@@ -85,27 +134,100 @@ function onSubmit(e) {
     return;
   }
   setError("p-term", "");
-  const term = $("p-term").value;
-  const instructor = $("p-instructor").value;
-  const rows = selected.detail.predictions.filter((p) => p.termKey === term && (!instructor || p.instructor === instructor));
-  renderResult(selected.course, selected.detail, combine(rows));
   history.replaceState(null, "", `?id=${selected.course.id}`);
+  const instructor = $("p-instructor").value;
+  if (termKind() === LIVE) {
+    showForecast(instructor, $("p-format").value);
+    return;
+  }
+  const rows = selected.detail.predictions.filter((p) => p.termKey === termKey() && (!instructor || p.instructor === instructor));
+  renderResult(selected.course, selected.detail, combine(rows));
+}
+
+/* Live forecast ----------------------------------------------------------- */
+function stateHTML(icon, message) {
+  return `<div class="panel result-empty">${icon}<p>${escapeHTML(message)}</p></div>`;
+}
+
+async function showForecast(instructor, format) {
+  const id = ++request;
+  const { course, detail, options } = selected;
+  $("result").innerHTML = stateHTML('<div class="spinner" aria-hidden="true"></div>', "Running the model…");
+  try {
+    const f = await getForecast({ course: course.id, term: termKey(), instructor, format });
+    if (id !== request) return;
+    renderResult(course, detail, {
+      term: f.term.label,
+      instructor: f.instructor ?? `Any instructor (${f.sections.length})`,
+      subline: FORMAT_LABELS[f.format ?? options.usualFormat],
+      gpa: f.gpa,
+      dfw: f.dfw,
+      difficulty: f.difficulty,
+      highRisk: f.highRisk,
+      forecast: f,
+    });
+  } catch (err) {
+    if (id !== request) return;
+    console.error(err);
+    $("result").innerHTML = stateHTML(ICONS.warn, `The live model could not answer: ${err.message}`);
+  }
+}
+
+function forecastHTML(f) {
+  const pct = (v) => `${Math.round(v * 100)}%`;
+  const chances = DIFFICULTY.map((d) => `<div><dt>${d}</dt><dd class="num">${pct(f.difficultyProbabilities[d])}</dd></div>`).join("");
+  return `
+      <div class="result-actual">
+        <div class="spread">
+          <strong>How sure the model is</strong>
+          <span class="subtle result-small">Uses grades up to ${escapeHTML(f.dataUntil)}</span>
+        </div>
+        <dl class="result-actual-grid">
+          ${chances}
+          <div><dt>High-risk chance</dt><dd class="num">${pct(f.highRiskProbability)}</dd></div>
+        </dl>
+      </div>
+      ${f.newPair ? `<div class="note is-warn">${ICONS.info}<span>This instructor has not taught this course before, so the forecast leans on their other courses and the course’s own history.</span></div>` : ""}`;
 }
 
 /* Result ------------------------------------------------------------------ */
+function actualHTML(p) {
+  const error = p.gpa - p.actualGpa;
+  return `
+      <div class="result-actual">
+        <div class="spread">
+          <strong>What actually happened</strong>
+          <span class="subtle result-small">Held out from training</span>
+        </div>
+        <dl class="result-actual-grid">
+          <div><dt>Actual GPA</dt><dd class="num">${fmt.gpa(p.actualGpa)}</dd></div>
+          <div><dt>Actual DFW</dt><dd class="num">${fmt.pct(p.actualDfw)}</dd></div>
+          <div><dt>Model error</dt><dd class="num">${error >= 0 ? "+" : "−"}${Math.abs(error).toFixed(2)}</dd></div>
+          <div><dt>Actual label</dt><dd>${difficultyBadge(p.actualDifficulty)}</dd></div>
+        </dl>
+      </div>`;
+}
+
+function riskText(p) {
+  const top = "the 20% of offerings with the most D, F and W grades";
+  if (!p.forecast) return p.highRisk ? `Among ${top}.` : `Not in ${top}.`;
+  const chance = Math.round(p.forecast.highRiskProbability * 100);
+  return `${p.highRisk ? "Flagged as high risk" : "Not flagged"}: ${chance}% chance of being among ${top}.`;
+}
+
 function renderResult(course, detail, p) {
   const instructorHistory = detail.instructors.find((i) => i.name === p.instructor);
-  const error = p.gpa - p.actualGpa;
   const meter = (v) => Math.min(100, (v / DFW_METER_MAX) * 100);
   const level = p.difficulty.toLowerCase();
+  const subline = p.forecast ? p.subline : `${fmt.int(p.students)} students`;
 
   $("result").innerHTML = `
     <article class="panel result">
       <header class="result-head">
         <div>
-          <span class="eyebrow">${escapeHTML(p.term)}</span>
+          <span class="eyebrow">${escapeHTML(p.term)}${p.forecast ? " · forecast" : ""}</span>
           <h2><a href="${courseUrl(course.id)}">${escapeHTML(course.code)}</a> ${escapeHTML(course.title)}</h2>
-          <p class="subtle">${escapeHTML(p.instructor)} · ${fmt.int(p.students)} students</p>
+          <p class="subtle">${escapeHTML(p.instructor)} · ${escapeHTML(subline)}</p>
         </div>
         ${difficultyBadge(p.difficulty)}
       </header>
@@ -122,7 +244,7 @@ function renderResult(course, detail, p) {
         <div class="stack">
           <div class="spread"><span class="stat-label subtle">Predicted DFW rate</span><strong class="num">${fmt.pct(p.dfw)}</strong></div>
           <div class="meter is-${level}"><span style="width:${meter(p.dfw)}%"></span></div>
-          <span class="subtle result-small">${p.highRisk ? "Among the 20% of offerings with the most D, F and W grades." : "Not in the top 20% for D, F and W grades."}</span>
+          <span class="subtle result-small">${riskText(p)}</span>
         </div>
         <div class="stack">
           <span class="stat-label subtle">Context</span>
@@ -134,18 +256,7 @@ function renderResult(course, detail, p) {
         </div>
       </div>
 
-      <div class="result-actual">
-        <div class="spread">
-          <strong>What actually happened</strong>
-          <span class="subtle result-small">Held out from training</span>
-        </div>
-        <dl class="result-actual-grid">
-          <div><dt>Actual GPA</dt><dd class="num">${fmt.gpa(p.actualGpa)}</dd></div>
-          <div><dt>Actual DFW</dt><dd class="num">${fmt.pct(p.actualDfw)}</dd></div>
-          <div><dt>Model error</dt><dd class="num">${error >= 0 ? "+" : "−"}${Math.abs(error).toFixed(2)}</dd></div>
-          <div><dt>Actual label</dt><dd>${difficultyBadge(p.actualDifficulty)}</dd></div>
-        </dl>
-      </div>
+      ${p.forecast ? forecastHTML(p.forecast) : actualHTML(p)}
 
       <div class="note">${ICONS.info}<span>This describes the course offering on average, not your personal grade.</span></div>
 
@@ -160,16 +271,17 @@ function renderResult(course, detail, p) {
 /* Init -------------------------------------------------------------------- */
 async function init() {
   $("predict-form").addEventListener("submit", onSubmit);
-  $("p-term").addEventListener("change", fillInstructors);
+  $("p-term").addEventListener("change", onTermChange);
   attachAutocomplete($("p-course"), {
     getCourses: () => courses,
-    filter: (c) => c.predGpa != null,
+    filter: (c) => Boolean(live) || c.predGpa != null,
     onSelect: selectCourse,
   });
   try {
-    courses = await getCourses();
+    [courses, live] = await Promise.all([getCourses(), getLiveModel()]);
+    renderLiveStatus();
     const id = new URLSearchParams(location.search).get("id");
-    const preset = courses.find((c) => c.id === id && c.predGpa != null);
+    const preset = courses.find((c) => c.id === id && (live || c.predGpa != null));
     if (preset) {
       await selectCourse(preset);
       $("predict-form").requestSubmit();

@@ -1,3 +1,4 @@
+// Explorer page: search, filter and show all the courses, with a view switch.
 import { getCourses } from "./data.js";
 import { addToList } from "./lists.js";
 import { ICONS, escapeHTML, fmt, difficultyBadge, courseUrl, debounce, errorState, store } from "./main.js";

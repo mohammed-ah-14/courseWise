@@ -1,3 +1,4 @@
+// Insights page: findings and charts about the course difficulty over the years.
 import { getInsights } from "./data.js";
 import { barChart, lineChart, hbarList, PALETTE } from "./charts.js";
 import { escapeHTML, fmt, courseUrl, errorState } from "./main.js";
@@ -13,7 +14,7 @@ let metric = "gpa";
 /* Findings ---------------------------------------------------------------- */
 const byKey = (list, key) => list.find((x) => x.key === key);
 
-// The newest year is often partial; use the last year with a normal number of students.
+// The newest year is often not complete, so use the last year that have normal number of students.
 function lastFullYear(years) {
   const [last, prev] = years.slice(-2).reverse();
   return last.students < prev.students * 0.6 ? prev : last;
@@ -24,7 +25,7 @@ function findings(d) {
   const last = lastFullYear(d.byYear);
   const y2019 = byKey(d.byYear, 2019), y2020 = byKey(d.byYear, 2020);
   const intro = byKey(d.byLevel, 100), grad = byKey(d.byLevel, 500);
-  const groups = d.byGroup; // sorted hardest first
+  const groups = d.byGroup; // sorted from the hardest first
   const items = [
     [`+${(last.gpa - first.gpa).toFixed(2)}`, "Grade inflation",
       `The average GPA rose from ${fmt.gpa(first.gpa)} in ${first.key} to ${fmt.gpa(last.gpa)} in ${last.key}. That is why difficulty is judged within each year.`],
@@ -109,7 +110,7 @@ async function init() {
     data = await getInsights();
     findings(data);
     fillYears(data.byYear);
-    // Both tabs drive the same chart, so they only toggle the metric.
+    // Both tabs control the same chart, so they only change the metric.
     const tabs = document.querySelectorAll("[data-metric]");
     tabs.forEach((t) => t.addEventListener("click", () => {
       metric = t.dataset.metric;

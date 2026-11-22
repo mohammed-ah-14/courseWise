@@ -1,3 +1,4 @@
+// Planner page: user make one semester plan and see the workload.
 import { getCourses } from "./data.js";
 import { attachAutocomplete } from "./autocomplete.js";
 import { barChart, PALETTE } from "./charts.js";

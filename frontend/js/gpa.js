@@ -1,3 +1,4 @@
+// GPA calculator page: term GPA, cumulative GPA and target GPA.
 import { ICONS, escapeHTML, fmt, initTabs, store } from "./main.js";
 
 const $ = (id) => document.getElementById(id);
@@ -6,7 +7,7 @@ const SCALE = { "A": 4.0, "A-": 3.7, "B+": 3.3, "B": 3.0, "B-": 2.7, "C+": 2.3, 
 const blankRow = () => ({ name: "", credits: 3, grade: "" });
 
 let rows = store.get(ROWS_KEY, null) || [blankRow(), blankRow(), blankRow(), blankRow()];
-let lastTerm = null; // { gpa, credits }
+let lastTerm = null; // save the last term result: { gpa, credits }
 
 /* Term GPA ---------------------------------------------------------------- */
 const gradeOptions = (selected) => `<option value="">–</option>${Object.keys(SCALE)
@@ -65,7 +66,7 @@ function bindTerm() {
   });
 }
 
-/* Shared number reading ---------------------------------------------------- */
+/* Reading numbers (shared) ---------------------------------------------------- */
 function read(ids, errorId) {
   const values = ids.map((id) => ($(id).value.trim() === "" ? null : Number($(id).value)));
   if (values.some((v) => v == null)) { $(errorId).textContent = ""; return null; }

@@ -1,16 +1,16 @@
-// Course autocomplete for a text input (keyboard + mouse, ARIA combobox).
+// Autocomplete for course search input. It work with keyboard and mouse, and use ARIA combobox.
 import { searchCourses } from "./data.js";
 import { escapeHTML, difficultyBadge } from "./main.js";
 
 let uid = 0;
 
 /**
- * @param {HTMLInputElement} input  must sit inside an element with class "ac"
+ * @param {HTMLInputElement} input  must be inside one element with class "ac"
  * @param {object} opts
- *   getCourses: () => course[]          (already loaded list)
+ *   getCourses: () => course[]          (the list we already load)
  *   onSelect:   (course) => void
- *   filter:     (course) => boolean     optional
- *   clearOnSelect: boolean              empty the input after choosing
+ *   filter:     (course) => boolean     optional, to hide some course
+ *   clearOnSelect: boolean              make the input empty after user choose
  */
 export function attachAutocomplete(input, { getCourses, onSelect, filter, clearOnSelect = false, limit = 8 }) {
   const list = document.createElement("ul");

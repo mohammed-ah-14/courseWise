@@ -28,7 +28,10 @@
     <section class="section">
       <div class="container predictor">
         <form class="panel predict-form" id="predict-form" novalidate>
-          <h2 class="panel-title">Your course</h2>
+          <div class="stack predict-head">
+            <h2 class="panel-title">Your course</h2>
+            <p class="hint live-status" id="p-live">Checking for the live model…</p>
+          </div>
 
           <div class="field">
             <label for="p-course">Course</label>
@@ -45,8 +48,17 @@
 
           <div class="field">
             <label for="p-instructor">Instructor <span class="subtle">(optional)</span></label>
-            <select class="select" id="p-instructor" disabled><option value="">Any instructor</option></select>
-            <span class="hint">“Any instructor” averages all sections of that term by class size.</span>
+            <select class="select" id="p-instructor" disabled aria-describedby="p-instructor-hint"><option value="">Any instructor</option></select>
+            <span class="hint" id="p-instructor-hint">“Any instructor” averages all sections of that term by class size.</span>
+          </div>
+
+          <div class="field" id="p-format-field" hidden>
+            <label for="p-format">Format</label>
+            <select class="select" id="p-format">
+              <option value="">Usual format</option>
+              <option value="in-person">In person</option>
+              <option value="online">Online</option>
+            </select>
           </div>
 
           <button class="btn btn-primary predict-submit" type="submit">Predict</button>

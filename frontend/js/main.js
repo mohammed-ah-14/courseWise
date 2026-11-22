@@ -1,4 +1,4 @@
-// CourseWise — shared layout and UI behaviour (header, footer, theme, toast, helpers).
+// CourseWise — shared layout and UI behavior (header, footer, theme, toast, helper functions).
 
 const svg = (body, extra = "") =>
   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"${extra}>${body}</svg>`;
@@ -24,10 +24,10 @@ export const ICONS = {
   star: svg('<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/>'),
 };
 
-// Brand mark: a diamond (echoing the UoS pattern) with a rising line inside.
+// Brand logo: one diamond (like the UoS pattern) with a going-up line inside.
 export const BRAND_MARK = `<svg class="brand-mark" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M16 2.5 29.5 16 16 29.5 2.5 16Z"/><path d="m9.5 18.5 4-4 3 3 6-6"/></svg>`;
 
-// Pages live in pages/; index.html sits at the root. Resolve links from either.
+// Pages are inside pages/ folder, but index.html is in the root. So we make the links work from both.
 const IN_PAGES = location.pathname.includes("/pages/");
 const ROOT = IN_PAGES ? "../" : "";
 const PAGES = IN_PAGES ? "" : "pages/";
@@ -179,7 +179,7 @@ export const store = {
     }
   },
   set(key, value) {
-    try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* storage unavailable */ }
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch { /* storage is not available */ }
   },
 };
 
@@ -236,7 +236,7 @@ export function initAccordions(root = document) {
   });
 }
 
-// Tabs: <div role="tablist"> with [role=tab][aria-controls]; calls onChange(id).
+// Tabs: <div role="tablist"> with [role=tab][aria-controls]; it call onChange(id).
 export function initTabs(tablist, onChange = () => {}) {
   const tabs = [...tablist.querySelectorAll('[role="tab"]')];
   const select = (tab) => {
@@ -282,19 +282,19 @@ export function difficultyBadge(level) {
 
 export const courseUrl = (id) => `${PAGES}course.html?id=${encodeURIComponent(id)}`;
 
-// Position (0-100%) of a GPA on the 0-4 scale.
+// Find the position (0-100%) of one GPA on the 0-4 scale.
 export const gpaPercent = (gpa) => Math.max(0, Math.min(100, (gpa / 4) * 100));
 
-const MIN_MARKER_GAP = 14; // % of the scale width needed to show two labels side by side
+const MIN_MARKER_GAP = 14; // % of scale width we need to show two labels side by side
 
-// GPA scale markup: markers = [{ value, label, variant: "" | "is-ghost" | "is-brand" }]
+// Make the HTML for GPA scale: markers = [{ value, label, variant: "" | "is-ghost" | "is-brand" }]
 export function scaleHTML(markers, { from = 0, to = 4 } = {}) {
   const pos = (v) => Math.max(0, Math.min(100, ((v - from) / (to - from)) * 100));
   const ticks = [];
   for (let v = from; v <= to + 1e-9; v += 0.5) ticks.push(`<span style="left:${pos(v)}%">${v.toFixed(1)}</span>`);
   const shown = markers.filter((m) => m.value != null);
   const main = shown.filter((m) => m.variant !== "is-ghost");
-  // A ghost (comparison) marker that would sit on top of a main one adds only clutter.
+  // If a ghost (comparison) marker is on top of the main one, it only make the scale messy.
   const visible = shown.filter((m) => m.variant !== "is-ghost"
     || main.every((o) => Math.abs(pos(o.value) - pos(m.value)) > MIN_MARKER_GAP));
   const pins = visible

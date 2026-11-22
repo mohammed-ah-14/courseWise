@@ -1,3 +1,4 @@
+// Course page: show one course with its grades, trend, terms and instructors.
 import { getCourse, getCourseDetail } from "./data.js";
 import { barChart, lineChart, PALETTE } from "./charts.js";
 import { addToList } from "./lists.js";
@@ -8,7 +9,7 @@ const GRADE_ORDER = ["A+", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D
 const TERM_ORDER = ["Winter", "Spring", "Summer", "Fall"];
 const COVID = { from: "2020", to: "2021", label: "COVID" };
 
-// A grades green, D/F red, W grey, the rest ink.
+// Color for each grade: A is green, D and F is red, W is grey, other grade use normal ink color.
 const gradeColor = (g) => (g === "W" ? PALETTE.muted : g.startsWith("A") ? PALETTE.brand
   : g.startsWith("D") || g === "F" ? PALETTE.hard : PALETTE.ink);
 

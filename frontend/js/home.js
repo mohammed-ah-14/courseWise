@@ -1,3 +1,4 @@
+// Home page: counters, hero, GPA spectrum chart and the hardest / most forgiving ranking.
 import { getCourses, getMeta, getModel } from "./data.js";
 import { attachAutocomplete } from "./autocomplete.js";
 import { mount } from "./charts.js";
@@ -63,7 +64,7 @@ function renderHeroCard(course) {
     <span class="hero-card-more">Open course</span>`;
 }
 
-/* Spectrum (a beeswarm of course GPAs) ------------------------------------ */
+/* Spectrum (beeswarm chart of course GPAs) ------------------------------------ */
 function spectrumLayout(list, width, r) {
   const [lo, hi] = SPECTRUM_RANGE;
   const pad = 8;

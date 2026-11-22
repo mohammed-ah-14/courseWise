@@ -1,5 +1,9 @@
-// CourseWise — data loading. Files are produced by `python3 -m coursewise export` (backend).
-// To switch to a live model API later, only these functions need to change.
+// CourseWise — loading the data.
+// The static JSON files are made by `python3 -m coursewise export` (backend).
+// Live forecast come from `python3 -m coursewise serve`. If it is not running, the site use only the static files.
+
+const API_URL = "http://127.0.0.1:8000/api/";
+const API_TIMEOUT_MS = 1500; // only for health check; one forecast can take few seconds
 
 const cache = new Map();
 
@@ -25,15 +29,37 @@ export async function getCourse(id) {
   return courses.find((c) => c.id === id);
 }
 
-// Detail (grades, trend, terms, instructors, predictions) lives in one file per subject.
+// The detail (grades, trend, terms, instructors, predictions) is saved in one file for each subject.
 export async function getCourseDetail(course) {
   const subject = await load(`subjects/${course.subject}`);
   return subject[course.id];
 }
 
+/* Live model API ---------------------------------------------------------- */
+async function api(endpoint, params = {}, { timeout } = {}) {
+  const url = new URL(endpoint, API_URL);
+  for (const [key, value] of Object.entries(params)) if (value) url.searchParams.set(key, value);
+  const res = await fetch(url, { signal: timeout ? AbortSignal.timeout(timeout) : undefined });
+  const body = await res.json();
+  if (!res.ok) throw new Error(body.error || `API error ${res.status}`);
+  return body;
+}
+
+let health;
+// Give back { dataUntil, terms, ... } if the live model is running, if not it give null. We check only one time per page.
+export function getLiveModel() {
+  health ??= api("health", {}, { timeout: API_TIMEOUT_MS }).catch(() => null);
+  return health;
+}
+
+export const getForecastOptions = (courseId) => api("options", { course: courseId });
+
+// Send { course, term, instructor?, format? } and get the forecast for the next term.
+export const getForecast = ({ course, term, instructor, format }) => api("predict", { course, term, instructor, format });
+
 const normalise = (s) => s.toLowerCase().replace(/\s+/g, "");
 
-// Rank: exact code > code prefix > title word prefix > anywhere. Bigger courses first on ties.
+// Ranking: exact code > code prefix > title word prefix > anywhere. If same rank, the bigger course go first.
 export function searchCourses(courses, query, limit = 8, filter = () => true) {
   const q = query.trim().toLowerCase();
   if (!q) return [];

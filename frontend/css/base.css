@@ -1,20 +1,18 @@
-/* ==========================================================================
-   CourseWise — base: fonts, tokens, reset, typography, layout
-   Calm academic look: warm paper, ink text, hairlines, green as an accent.
-   ========================================================================== */
 
+/* font face, to load the custom fonts */
 @font-face { font-family: "Bukra"; src: url("../assets/fonts/29LT%20Bukra%20Lt.ttf") format("truetype"); font-weight: 300; font-display: swap; }
 @font-face { font-family: "Bukra"; src: url("../assets/fonts/29LT%20Bukra%20Rg.ttf") format("truetype"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "Bukra"; src: url("../assets/fonts/29LT%20Bukra%20Md.ttf") format("truetype"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Bukra"; src: url("../assets/fonts/29LT%20Bukra%20SmBd.ttf") format("truetype"); font-weight: 600; font-display: swap; }
 
-/* University of Sharjah brand palette. Every colour on the site comes from these tokens. */
+
 :root {
-  /* Brand: primary */
-  --uos-green: #00C389;      /* Pantone 3395 C: fills, accents */
-  --uos-green-strong: #008F65; /* AA-contrast green: text, links */
+  /* uos Brand: primary */
+  --uos-green: #00C389;
+  --uos-green-strong: #008F65;
   --uos-green-soft: #DDF3ED;
-  /* Brand: secondary */
+
+  /* uos Brand: secondary */
   --uos-navy: #403A60;
   --uos-blue: #0857C3;
   --uos-purple: #963CBD;
@@ -23,7 +21,7 @@
   --uos-yellow: #FFBF3F;
 
   /* Surfaces */
-  --paper: #F8F8F8;          /* UoS page background */
+  --paper: #F8F8F8;
   --surface: #FFFFFF;
   --surface-2: #EFEFF3;
   --line: rgba(143, 143, 143, 0.22);
@@ -38,8 +36,9 @@
   --brand: var(--uos-green);
   --brand-ink: var(--uos-green-strong);
   --brand-wash: var(--uos-green-soft);
-  --navy: var(--uos-green-strong); /* main UI + chart colour: green leads */
-  --deep: #000000;           /* UoS black: hero overlay, footer */
+  /* main UI and chart color: green is the leader */
+  --navy: var(--uos-green-strong);
+  --deep: #000000;
   --accent-2: var(--uos-yellow);
   --accent-3: var(--uos-orange);
 
