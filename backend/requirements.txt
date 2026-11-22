@@ -1,0 +1,17 @@
+# Core (required)
+pandas>=2.2
+numpy>=2.0
+scikit-learn>=1.6
+scipy>=1.13
+joblib>=1.4
+
+# Figures (optional: figures are skipped without it)
+matplotlib>=3.9
+
+# Gradient boosting (optional: each model is skipped if its package is missing)
+xgboost>=2.1
+lightgbm>=4.5
+catboost>=1.2
+
+# Explainability (optional: falls back to permutation importance)
+shap>=0.46

@@ -1,0 +1,11 @@
+# Raw and processed data (re-created by `download` and `prepare`)
+data/
+
+# Trained models are large; re-created by `train`
+artifacts/models/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
