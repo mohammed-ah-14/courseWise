@@ -154,7 +154,7 @@ function renderFooter() {
       </div>
     </div>
     <div class="container footer-bottom">
-      <span class="footer-uni"><img src="${ROOT}assets/images/unilogo_long_white.png" alt="University of Sharjah" width="718" height="138"> Student project · ${new Date().getFullYear()}</span>
+      <span class="footer-uni"><a href="https://www.sharjah.ac.ae"><img src="${ROOT}assets/images/unilogo_long_white.png" alt="University of Sharjah" width="718" height="138"></a> Student project · ${new Date().getFullYear()}</span>
       <span>Predictions describe course-level trends, not individual grades.</span>
     </div>`;
 }
