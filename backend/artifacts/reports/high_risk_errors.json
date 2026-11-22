@@ -1,0 +1,276 @@
+{
+  "overall_accuracy": 0.850273,
+  "by_group": {
+    "level": [
+      {
+        "level": 200,
+        "count": 1288,
+        "accuracy": 0.802019
+      },
+      {
+        "level": 100,
+        "count": 1168,
+        "accuracy": 0.820205
+      },
+      {
+        "level": 300,
+        "count": 1173,
+        "accuracy": 0.825234
+      },
+      {
+        "level": 400,
+        "count": 1677,
+        "accuracy": 0.858676
+      },
+      {
+        "level": 600,
+        "count": 105,
+        "accuracy": 0.942857
+      },
+      {
+        "level": 500,
+        "count": 791,
+        "accuracy": 0.977244
+      },
+      {
+        "level": 700,
+        "count": 16,
+        "accuracy": 1.0
+      }
+    ],
+    "dept_group": [
+      {
+        "dept_group": "Humanities & Arts",
+        "count": 889,
+        "accuracy": 0.770529
+      },
+      {
+        "dept_group": "Sciences",
+        "count": 784,
+        "accuracy": 0.808673
+      },
+      {
+        "dept_group": "Social Sciences",
+        "count": 728,
+        "accuracy": 0.817308
+      },
+      {
+        "dept_group": "Other",
+        "count": 466,
+        "accuracy": 0.83691
+      },
+      {
+        "dept_group": "Media",
+        "count": 490,
+        "accuracy": 0.84898
+      },
+      {
+        "dept_group": "Agriculture & Health",
+        "count": 853,
+        "accuracy": 0.866354
+      },
+      {
+        "dept_group": "Engineering",
+        "count": 1152,
+        "accuracy": 0.875
+      },
+      {
+        "dept_group": "Education",
+        "count": 148,
+        "accuracy": 0.939189
+      },
+      {
+        "dept_group": "Business",
+        "count": 708,
+        "accuracy": 0.961864
+      }
+    ],
+    "term": [
+      {
+        "term": "Summer",
+        "count": 328,
+        "accuracy": 0.783537
+      },
+      {
+        "term": "Winter",
+        "count": 49,
+        "accuracy": 0.816327
+      },
+      {
+        "term": "Spring",
+        "count": 3765,
+        "accuracy": 0.85259
+      },
+      {
+        "term": "Fall",
+        "count": 2076,
+        "accuracy": 0.857418
+      }
+    ],
+    "sched_type": [
+      {
+        "sched_type": "Onl",
+        "count": 11,
+        "accuracy": 0.545455
+      },
+      {
+        "sched_type": "LBD",
+        "count": 52,
+        "accuracy": 0.807692
+      },
+      {
+        "sched_type": "OLC",
+        "count": 140,
+        "accuracy": 0.835714
+      },
+      {
+        "sched_type": "ONL",
+        "count": 1219,
+        "accuracy": 0.841674
+      },
+      {
+        "sched_type": "ST",
+        "count": 32,
+        "accuracy": 0.84375
+      },
+      {
+        "sched_type": "LEC",
+        "count": 1421,
+        "accuracy": 0.847291
+      },
+      {
+        "sched_type": "LAB",
+        "count": 132,
+        "accuracy": 0.848485
+      },
+      {
+        "sched_type": "LCD",
+        "count": 2776,
+        "accuracy": 0.855187
+      },
+      {
+        "sched_type": "OD",
+        "count": 7,
+        "accuracy": 0.857143
+      },
+      {
+        "sched_type": "DIS",
+        "count": 376,
+        "accuracy": 0.861702
+      },
+      {
+        "sched_type": "INT",
+        "count": 10,
+        "accuracy": 0.9
+      },
+      {
+        "sched_type": "PR",
+        "count": 25,
+        "accuracy": 0.92
+      },
+      {
+        "sched_type": "STA",
+        "count": 1,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "SEM",
+        "count": 3,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "CNF",
+        "count": 3,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "PKG",
+        "count": 3,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "TRV",
+        "count": 1,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "OLB",
+        "count": 3,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "Q",
+        "count": 2,
+        "accuracy": 1.0
+      },
+      {
+        "sched_type": "Unknown",
+        "count": 1,
+        "accuracy": 1.0
+      }
+    ],
+    "is_new_course": [
+      {
+        "is_new_course": 1,
+        "count": 226,
+        "accuracy": 0.845133
+      },
+      {
+        "is_new_course": 0,
+        "count": 5992,
+        "accuracy": 0.850467
+      }
+    ],
+    "is_new_instructor": [
+      {
+        "is_new_instructor": 1,
+        "count": 619,
+        "accuracy": 0.849758
+      },
+      {
+        "is_new_instructor": 0,
+        "count": 5599,
+        "accuracy": 0.85033
+      }
+    ],
+    "is_new_pair": [
+      {
+        "is_new_pair": 1,
+        "count": 1638,
+        "accuracy": 0.836386
+      },
+      {
+        "is_new_pair": 0,
+        "count": 4580,
+        "accuracy": 0.85524
+      }
+    ],
+    "class_size": [
+      {
+        "class_size": "(0.0, 30.0]",
+        "count": 1894,
+        "accuracy": 0.829989
+      },
+      {
+        "class_size": "(30.0, 50.0]",
+        "count": 1517,
+        "accuracy": 0.835201
+      },
+      {
+        "class_size": "(50.0, 100.0]",
+        "count": 1473,
+        "accuracy": 0.861507
+      },
+      {
+        "class_size": "(100.0, 200.0]",
+        "count": 742,
+        "accuracy": 0.871968
+      },
+      {
+        "class_size": "(200.0, inf]",
+        "count": 592,
+        "accuracy": 0.898649
+      }
+    ]
+  }
+}

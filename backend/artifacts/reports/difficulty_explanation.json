@@ -1,0 +1,104 @@
+{
+  "task": "difficulty",
+  "model": "catboost",
+  "method": "shap",
+  "importance": [
+    {
+      "feature": "pair_shrunk_dev",
+      "importance": 0.288374
+    },
+    {
+      "feature": "instructor",
+      "importance": 0.202702
+    },
+    {
+      "feature": "shrunk_guess_gpa",
+      "importance": 0.127769
+    },
+    {
+      "feature": "pair_last_gpa",
+      "importance": 0.126592
+    },
+    {
+      "feature": "adjusted_guess_gpa",
+      "importance": 0.061102
+    },
+    {
+      "feature": "best_guess_gpa",
+      "importance": 0.057625
+    },
+    {
+      "feature": "pair_past_students",
+      "importance": 0.047385
+    },
+    {
+      "feature": "ins_ewm_dev",
+      "importance": 0.045857
+    },
+    {
+      "feature": "crs_ewm_gpa",
+      "importance": 0.044839
+    },
+    {
+      "feature": "subject",
+      "importance": 0.04316
+    },
+    {
+      "feature": "glob_ewm_gpa",
+      "importance": 0.042638
+    },
+    {
+      "feature": "ins_last_gpa",
+      "importance": 0.037901
+    },
+    {
+      "feature": "crs_shrunk_dev",
+      "importance": 0.034682
+    },
+    {
+      "feature": "pair_ewm_dev",
+      "importance": 0.033967
+    },
+    {
+      "feature": "shrunk_guess_dfw",
+      "importance": 0.031246
+    },
+    {
+      "feature": "crs_ewm_dev",
+      "importance": 0.027246
+    },
+    {
+      "feature": "crs_last_gpa",
+      "importance": 0.02665
+    },
+    {
+      "feature": "crs_past_w_rate",
+      "importance": 0.024985
+    },
+    {
+      "feature": "credit_hours",
+      "importance": 0.022685
+    },
+    {
+      "feature": "sched_type",
+      "importance": 0.021842
+    }
+  ],
+  "example": {
+    "course_id": "CHEM102",
+    "year_term": "2025-fa",
+    "instructor": "Marville, Kelly",
+    "contributions": {
+      "pair_shrunk_dev": 0.535555,
+      "instructor": 0.382502,
+      "shrunk_guess_gpa": 0.312977,
+      "pair_past_students": 0.147106,
+      "adjusted_guess_gpa": 0.142854,
+      "crs_shrunk_dev": 0.131587,
+      "pair_last_gpa": 0.119453,
+      "best_guess_gpa": 0.080901,
+      "sched_type": 0.076858,
+      "crs_ewm_dev": 0.072441
+    }
+  }
+}

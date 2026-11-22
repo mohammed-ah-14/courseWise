@@ -1,0 +1,88 @@
+{
+  "task": "gpa",
+  "model": "svm",
+  "method": "permutation",
+  "importance": [
+    {
+      "feature": "shrunk_guess_gpa",
+      "importance": 0.180891
+    },
+    {
+      "feature": "pair_shrunk_dev",
+      "importance": 0.001279
+    },
+    {
+      "feature": "glob_same_term_last_gpa",
+      "importance": 0.0011
+    },
+    {
+      "feature": "pair_last_gpa",
+      "importance": 0.000982
+    },
+    {
+      "feature": "ins_last_gpa",
+      "importance": 0.000643
+    },
+    {
+      "feature": "crs_shrunk_dev",
+      "importance": 0.000619
+    },
+    {
+      "feature": "ins_past_share_A",
+      "importance": 0.000591
+    },
+    {
+      "feature": "ins_grading_offset",
+      "importance": 0.000564
+    },
+    {
+      "feature": "crs_recent_gpa",
+      "importance": 0.000432
+    },
+    {
+      "feature": "shrunk_guess_dfw",
+      "importance": 0.00042
+    },
+    {
+      "feature": "crs_past_gpa_std",
+      "importance": 0.000314
+    },
+    {
+      "feature": "crs_ewm_dev",
+      "importance": 0.000313
+    },
+    {
+      "feature": "ins_shrunk_offset",
+      "importance": 0.000296
+    },
+    {
+      "feature": "sub_past_gpa",
+      "importance": 0.000281
+    },
+    {
+      "feature": "crs_past_share_A",
+      "importance": 0.000261
+    },
+    {
+      "feature": "sublvl_past_dev",
+      "importance": 0.000247
+    },
+    {
+      "feature": "gened_quantitative",
+      "importance": 0.000244
+    },
+    {
+      "feature": "pair_past_dev",
+      "importance": 0.000243
+    },
+    {
+      "feature": "crs_last_gpa",
+      "importance": 0.000232
+    },
+    {
+      "feature": "sublvl_past_gpa",
+      "importance": 0.000227
+    }
+  ],
+  "example": null
+}
