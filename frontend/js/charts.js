@@ -42,18 +42,30 @@ function attachTooltip(el) {
   tip.className = "chart-tip";
   tip.hidden = true;
   el.append(tip);
-  el.addEventListener("pointermove", (e) => {
-    const target = e.target.closest("[data-tip]");
-    if (!target || !el.contains(target)) { tip.hidden = true; return; }
-    if (!tip.isConnected) el.append(tip);
+  let active = null;
+  const place = (e) => {
     const box = el.getBoundingClientRect();
+    tip.style.left = `${Math.max(70, Math.min(box.width - 70, e.clientX - box.left))}px`;
+    tip.style.top = `${e.clientY - box.top}px`;
+  };
+  el.addEventListener("mouseover", (e) => {
+    const target = e.target.closest("[data-tip]");
+    if (!target || !el.contains(target) || target === active) return;
+    active?.classList.remove("is-hovered");
+    active = target;
+    active.classList.add("is-hovered");
+    if (!tip.isConnected) el.append(tip);
     tip.innerHTML = target.dataset.tip;
     tip.hidden = false;
-    const x = Math.max(70, Math.min(box.width - 70, e.clientX - box.left));
-    tip.style.left = `${x}px`;
-    tip.style.top = `${e.clientY - box.top}px`;
+    place(e);
   });
-  el.addEventListener("pointerleave", () => { tip.hidden = true; });
+  el.addEventListener("mousemove", (e) => { if (active) place(e); });
+  el.addEventListener("mouseout", (e) => {
+    if (!active || active.contains(e.relatedTarget)) return;
+    active.classList.remove("is-hovered");
+    active = null;
+    tip.hidden = true;
+  });
 }
 
 function yAxis(ticks, y, width, format) {

@@ -26,12 +26,38 @@ function renderRows() {
     </li>`).join("");
 }
 
+// Academic standing label for a term GPA.
+function standing(gpa) {
+  switch (Math.floor(gpa)) {
+    case 4: return "Excellent";
+    case 3: return gpa >= 3.5 ? "Very good" : "Good";
+    case 2: return gpa >= 2.5 ? "Satisfactory" : "Fair";
+    case 1: return "Weak";
+    default: return "At risk";
+  }
+}
+
+// Count full terms of straight A's needed to lift the cumulative GPA to the target.
+function termsToTarget(cgpa, done, target, credits) {
+  const MAX_TERMS = 40;
+  let points = cgpa * done;
+  let hours = done;
+  let terms = 0;
+  do {
+    points += 4 * credits;
+    hours += credits;
+    terms += 1;
+  } while (points / hours < target && terms < MAX_TERMS);
+  return terms < MAX_TERMS ? terms : null;
+}
+
 function computeTerm() {
   const counted = rows.filter((r) => r.grade && r.credits > 0);
   const credits = counted.reduce((s, r) => s + Number(r.credits), 0);
   const points = counted.reduce((s, r) => s + Number(r.credits) * SCALE[r.grade], 0);
   lastTerm = credits ? { gpa: points / credits, credits } : null;
   $("term-gpa").textContent = lastTerm ? fmt.gpa(lastTerm.gpa) : "–";
+  $("term-standing").textContent = lastTerm ? standing(lastTerm.gpa) : "–";
   $("term-credits").textContent = fmt.credits(credits);
   $("term-points").textContent = points.toFixed(1);
   store.set(ROWS_KEY, rows);
@@ -102,8 +128,8 @@ function computeTarget() {
   let text;
   if (need > 4) {
     box.classList.add("is-hard");
-    const terms = Math.ceil((target * done - cgpa * done) / (credits * (4 - target)) + 1e-9);
-    text = `Not reachable in one term, even with a 4.00. At ${credits} hours per term with straight A's, it would take about ${Number.isFinite(terms) && terms > 0 ? terms : "several"} terms.`;
+    const terms = target < 4 ? termsToTarget(cgpa, done, target, credits) : null;
+    text = `Not reachable in one term, even with a 4.00. At ${credits} hours per term with straight A's, it would take about ${terms ?? "many"} terms.`;
   } else if (need <= cgpa) {
     box.classList.add("is-easy");
     text = need <= 0 ? "You are already above this target." : `Keep a term GPA of ${fmt.gpa(need)} or higher. That is at or below your current average.`;
